@@ -1,37 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { WelcomePage } from '../pages/welcome/welcome';
-import { LogInPage } from '../pages/log-in/log-in';
-
-import { IonMenuHeaderComponent } from '../components/ion-menu-header/ion-menu-header';
-
+import { FormsModule } from '@angular/forms';
+import { Http, HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-const appRoutes: Routes = [
-  { path: 'inicio', component: WelcomePage },
-  { path: 'ingreso', component: LogInPage },
-  { path: '',
-    redirectTo: '/inicio',
-    pathMatch: 'full'
-  }
-];
-
+import { AuthGuard, HeaderInicioModule } from '../shared';
 @NgModule({
-  declarations: [
-    AppComponent,
-    WelcomePage,
-    LogInPage,
-    IonMenuHeaderComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
-    )
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpModule,
+        AppRoutingModule,
+        HeaderInicioModule
+    ],
+    // exports: [HeaderInicioComponent],
+    providers: [AuthGuard],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

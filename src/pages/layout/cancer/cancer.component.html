@@ -1,0 +1,191 @@
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Editar Cancer</h4>
+        </div>
+        <div class="modal-body">
+          <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Cancer</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <form role="form">
+                <div class="form-group">
+                  <label>Id</label>
+                  <input type="text" class="form-control" placeholder="c-10">
+                </div>
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control" placeholder="24112983">
+                </div>
+                <div class="form-group">
+                  <label>Descripción</label>
+                  <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..."></textarea>
+                </div>
+              </form>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-info pull-right" data-dismiss="modal" (click)="save()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [@routerTransition]>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Cancer
+      </h1>
+      <ol class="breadcrumb">
+        <li *ngFor="let route of data.bread_crumb">
+          <a [routerLink]="[route.route]">
+            <i class="fa fa-dashboard"></i> {{route.name}}</a>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content" style="overflow-x: scroll;">
+
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Listado de cancer</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="representantes" datatable class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th style="width: 100px;">Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Trident</td>
+                    <td>Internet Explorer 4.0
+                    </td>
+                    <td>Win 95+</td>
+                    <td>
+                      <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
+                        (click)="edit()">
+                      </button>
+                      <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Trident</td>
+                    <td>Internet Explorer 5.0
+                    </td>
+                    <td>Win 95+</td>
+                    <td>
+                      <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
+                        (click)="edit()">
+                      </button>
+                      <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Misc</td>
+                    <td>Embedded devices</td>
+                    <td>-</td>
+                    <td>
+                      <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
+                        (click)="edit()">
+                      </button>
+                      <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Misc</td>
+                    <td>Links</td>
+                    <!-- <td>Text only</td> -->
+                    <td>-</td>
+                    <td>
+                      <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
+                        (click)="edit()">
+                      </button>
+                      <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Misc</td>
+                    <td>Lynx</td>
+                    <td>Text only</td>
+                    <td>
+                      <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
+                        (click)="edit()">
+                      </button>
+                      <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Misc</td>
+                    <td>IE Mobile</td>
+                    <td>Windows Mobile 6</td>
+                    <td>
+                      <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
+                        (click)="edit()">
+                      </button>
+                      <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Misc</td>
+                    <td>PSP browser</td>
+                    <td>PSP</td>
+                    <td>
+                      <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
+                        (click)="edit()">
+                      </button>
+                      <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Other browsers</td>
+                    <td>All others</td>
+                    <td>-</td>
+                    <td>
+                      <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
+                        (click)="edit()">
+                      </button>
+                      <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th style="width: 100px;">Opciones</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>

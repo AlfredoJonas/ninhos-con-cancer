@@ -1,0 +1,38 @@
+.navbar-nav>li>a.btn{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-right: 1px;
+  color: white;
+}
+
+.navbar-nav>li>a.btn:hover{
+  color: black;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+
+.brand-centered {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.brand-centered .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-toggle {
+    z-index: 1;
+}
+.navbar{
+  margin-bottom: 0px;
+}

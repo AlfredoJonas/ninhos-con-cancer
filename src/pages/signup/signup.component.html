@@ -1,0 +1,120 @@
+<app-header-inicio></app-header-inicio>
+<div class="login-page" [@routerTransition]>
+  <div class="container">
+    <div class="row">
+      <div id="form-login" class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong> Registrate para continuar</strong>
+          </div>
+          <div class="panel-body">
+            <form role="form">
+              <fieldset>
+                <div class="row">
+                  <div class="center-block">
+                    <img class="profile-img" src="../../../assets/images/logo.png" alt="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input class="form-control" placeholder="Correo" name="loginname" type="email" required autofocus>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input class="form-control" placeholder="Nombre de usuario" name="nombre-usuario" type="text" value="" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-lock"></i>
+                        </span>
+                        <input class="form-control" placeholder="Contraseña" name="password" type="password" value="" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-credit-card"></i>
+                        </span>
+                        <input class="form-control" placeholder="Cedula" name="cedula" type="number" value="" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input class="form-control" placeholder="Nombre" name="nombre" type="text" value="" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input class="form-control" placeholder="Apellido" name="apellido" type="text" value="" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-phone"></i>
+                        </span>
+                        <input class="form-control" placeholder="Numero de contacto 1" name="numero-contacto-1" type="phone" value="" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-phone"></i>
+                        </span>
+                        <input class="form-control" placeholder="Numero de contacto 2" name="numero-contacto-2" type="phone" value="" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-map-marker"></i>
+                        </span>
+                        <select class="form-control selectpicker" required>
+                          <option selected>Estado</option>
+                          <option>Merida</option>
+                          <option>Trujillo</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-map-marker"></i>
+                        </span>
+                        <select class="form-control selectpicker" required>
+                          <option selected>Municipio</option>
+                          <option>Merida</option>
+                          <option>Trujillo</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-lg btn-primary btn-block" value="Siguiente">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
