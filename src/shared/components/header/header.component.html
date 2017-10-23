@@ -45,8 +45,8 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a [routerLink]="['/perfil-administrador']" class="btn btn-default btn-flat" *ngIf="data.usuario_a.id_rol_usuario == '0'">Perfil</a>                
-                <a [routerLink]="['/perfil-representante']" class="btn btn-default btn-flat" *ngIf="data.usuario_a.id_rol_usuario == '1'">Perfil</a>
+                <a [routerLink]="['/perfil-administrador']" class="btn btn-default btn-flat" *ngIf="data.user_a.rol_id == '1'">Perfil</a>                
+                <a [routerLink]="['/perfil-representante']" class="btn btn-default btn-flat" *ngIf="data.user_a.rol_id == '2'">Perfil</a>
               </div>
               <div class="pull-right">
                 <a [routerLink]="['/inicio']" class="btn btn-default btn-flat" (click)="onLoggedout()">Salir</a>

@@ -4,8 +4,10 @@ import { Http, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AuthGuard, HeaderInicioModule } from '../shared';
+
 @NgModule({
     declarations: [
         AppComponent
@@ -13,7 +15,6 @@ import { AuthGuard, HeaderInicioModule } from '../shared';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        FormsModule,
         HttpModule,
         AppRoutingModule,
         HeaderInicioModule
