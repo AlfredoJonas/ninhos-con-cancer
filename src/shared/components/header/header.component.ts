@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() { }
 
   onLoggedout() {
-    localStorage.removeItem('isLoggedin');
     this.data.is_logged_in = false;
   }
 

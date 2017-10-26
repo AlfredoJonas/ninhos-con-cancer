@@ -1,0 +1,363 @@
+<app-header-inicio></app-header-inicio>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar niño</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box box-warning">
+          <div class="box-header with-border">
+            <h3 class="box-title">Niño</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <form role="form">
+              <div class="form-group">
+                <label>Id</label>
+                <input type="text" class="form-control" placeholder="c-10">
+              </div>
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="c-10">
+              </div>
+              <div class="form-group">
+                <label>Apellido</label>
+                <input type="text" class="form-control" placeholder="c-10">
+              </div>
+              <div class="form-group">
+                <label>Descripción de la situación</label>
+                <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..."></textarea>
+              </div>
+            </form>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-info pull-right" data-dismiss="modal" (click)="save()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ninho-page" [@routerTransition]>
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Perfil del Niño
+    </h1>
+    <ol class="breadcrumb">
+      <li *ngFor="let route of data.bread_crumb">
+        <a [routerLink]="[route.route]">
+          <i class="fa fa-dashboard"></i> {{route.name}}</a>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <div class="row">
+      <div class="col-md-3">
+
+        <!-- Profile Image -->
+        <div class="box box-primary">
+          <div class="box-body box-profile">
+            <img class="profile-user-img img-responsive img-circle" src="../../../assets/images/user_profile.png" alt="Imagen de usuario">
+
+            <h3 class="profile-username text-center">Sanoj94</h3>
+
+            <p class="text-muted text-center">Se encuentra en cama en estos momentos</p>
+
+            <ul class="list-group list-group-unbordered">
+              <li class="list-group-item">
+                <b>Nombre</b>
+                <p class="pull-right">Edwin Leandro</p>
+              </li>
+              <li class="list-group-item">
+                <b>Apellido</b>
+                <p class="pull-right">Vargas Apaclia</p>
+              </li>
+            </ul>
+
+            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
+              <b>Editar</b>
+            </a>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+        <!-- About Me Box -->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Tipos de Cancer</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <strong>
+              <div class="row">
+                <div class="col-md-9">
+                  <i class="fa fa-medkit" aria-hidden="true"></i> Cancer de pancreas
+                </div>
+                <div class="col-md-3">
+                  <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                  </button>
+                </div>
+              </div>
+            </strong>
+            <hr>
+            <strong>
+              <div class="row">
+                <div class="col-md-9">
+                  <i class="fa fa-medkit" aria-hidden="true"></i> Cancer de pulmon
+                </div>
+                <div class="col-md-3">
+                  <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                  </button>
+                </div>
+              </div>
+            </strong>
+            <hr>
+            <strong>
+              <div class="row">
+                <div class="col-md-9">
+                  <i class="fa fa-medkit" aria-hidden="true"></i> Cancer de estomago
+                </div>
+                <div class="col-md-3">
+                  <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
+                  </button>
+                </div>
+              </div>
+            </strong>
+          </div>
+          <form role="form">
+            <div class="form-group">
+              <label>Agregar Cancer</label>
+              <select class="form-control">
+                <option>Estomago</option>
+                <option>Pancreas</option>
+                <option>Cabeza</option>
+              </select>
+            </div>
+          </form>
+          <a href="#" class="btn btn-primary btn-block">
+            <b>Agregar</b>
+          </a>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <div id="myModaZoom" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Zoom de la imagen del requerimiento</h4>
+            </div>
+            <div class="modal-body">
+              <img src="" class="enlargeImageModalSource" style="width: 100%;">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="box box-success box-solid collapsed-box">
+              <div class="box-header with-border">
+                <h3 class="box-title">Agregar nuevo requerimiento</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="box-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label>Descripción situación</label>
+                    <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>Cantidad</label>
+                    <input type="number" class="form-control" placeholder="0">
+                  </div>
+                  <div class="form-group">
+                    <label>Fecha vencimiento</label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="date" class="form-control" name="bday">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Tipo</label>
+                    <select class="form-control">
+                      <option>Vitaminas</option>
+                      <option>Comida</option>
+                      <option>Insumos</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Adjuntos</label>
+                    <input type="file" name="img" multiple>
+                  </div>
+                </form>
+              </div>
+              <div class="box-footer">
+                <button type="submit" class="btn btn-info pull-right" (click)="save()">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="box box-warning box-solid">
+              <div class="box-header with-border">
+                <h3 class="box-title">Vitamina C</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-stacked">
+                    <li>
+                      <a>Una vitamina muy necesaria</a>
+                    </li>
+                    <li>
+                      <a>Cantidad
+                        <span class="pull-right badge bg-blue">5</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>Fecha vencimiento
+                        <span class="pull-right badge bg-blue">22/10/2017</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>Requerimiento
+                        <span class="pull-right badge bg-blue">Vitaminas</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <img id="img1" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
+                  (click)="openImg('img1')">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box box-warning box-solid">
+              <div class="box-header with-border">
+                <h3 class="box-title">Vitamina Z</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-stacked">
+                    <li>
+                      <a>Una vitamina muy necesaria</a>
+                    </li>
+                    <li>
+                      <a>Cantidad
+                        <span class="pull-right badge bg-blue">5</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>Fecha vencimiento
+                        <span class="pull-right badge bg-blue">22/10/2017</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>Requerimiento
+                        <span class="pull-right badge bg-blue">Vitaminas</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <img id="img2" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
+                  (click)="openImg('img2')">
+                <img id="img3" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
+                  (click)="openImg('img3')">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="box box-warning box-solid">
+              <div class="box-header with-border">
+                <h3 class="box-title">Vitamina X</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-stacked">
+                    <li>
+                      <a>Una vitamina muy necesaria</a>
+                    </li>
+                    <li>
+                      <a>Cantidad
+                        <span class="pull-right badge bg-blue">5</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>Fecha vencimiento
+                        <span class="pull-right badge bg-blue">22/10/2017</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>Requerimiento
+                        <span class="pull-right badge bg-blue">Vitaminas</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <img id="img4" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
+                  (click)="openImg('img4')">
+                <img id="img5" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
+                  (click)="openImg('img5')">
+                <img id="img6" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
+                  (click)="openImg('img6')">
+                <img id="img7" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
+                  (click)="openImg('img7')">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </section>
+</div>
+
+<footer id="main-footer" class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 0.1.4
+  </div>
+  <strong>Copyleft &copy; 2017-2018
+    <a [routerLink]="['/inicio']">www.niñosconcancer.com.ve</a>
+  </strong> todos los derechos y zurdos reservados.
+</footer>

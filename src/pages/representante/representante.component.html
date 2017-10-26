@@ -1,4 +1,6 @@
-<div class="perfil-r-page" [@routerTransition]>
+<app-header-inicio></app-header-inicio>
+
+<div [@routerTransition]>
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
@@ -331,3 +333,12 @@
   </section>
   <!-- /.content -->
 </div>
+
+<footer id="main-footer" class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 0.1.4
+  </div>
+  <strong>Copyleft &copy; 2017-2018
+    <a [routerLink]="['/inicio']">www.niñosconcancer.com.ve</a>
+  </strong> todos los derechos y zurdos reservados.
+</footer>

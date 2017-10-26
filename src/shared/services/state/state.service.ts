@@ -153,7 +153,8 @@ export class StateService {
     return this.http.get(this.url_rest + '' + ruta + '/' + obj.id);
   }
   post(ruta, obj) {
-    return this.http.post(this.url_rest + '' + ruta, JSON.stringify(obj));
+    // return this.http.post(this.url_rest + '' + ruta, JSON.stringify(obj));
+    return $.post(this.url_rest + '' + ruta, obj);
   }
   put(obj) {
     return this.http.put(this.url_rest + '' + obj.ruta, JSON.stringify(obj));

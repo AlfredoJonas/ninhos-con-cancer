@@ -9,8 +9,10 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     { path: 'inicio', loadChildren: '../pages/welcome/welcome.module#WelcomeModule' },
-    // { path: 'ingreso', loadChildren: '../pages/login/login.module#LoginModule' } ,
+    { path: 'donar', loadChildren: '../pages/donate/donate.module#DonateModule' } ,
     { path: 'registro', loadChildren: '../pages/signup/signup.module#SignupModule' },
+    { path: 'ninho', loadChildren: '../pages/ninho/ninho.module#NinhoModule' },
+    { path: 'representate', loadChildren: '../pages/representate/representate.module#RepresentateModule' },    
     { path: 'no-encontrada', loadChildren: '../pages/not-found/not-found.module#NotFoundModule' },
     { path: '**', redirectTo: 'no-encontrada' }
 ];

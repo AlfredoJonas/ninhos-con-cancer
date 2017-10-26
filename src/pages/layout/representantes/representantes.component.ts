@@ -21,7 +21,8 @@ export class RepresentantesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.state.setRoute(this.router.url, 'Representantes');    
+    this.state.setRoute(this.router.url, 'Representantes');   
+    console.log(this.data);
   }
 
   goRepresentante() {
