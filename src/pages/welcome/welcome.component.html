@@ -1,100 +1,105 @@
-<app-header-inicio></app-header-inicio>
-<div class="welcome-page" [@routerTransition]>
-  <!-- Page Content -->
-  <div id="body" class="container">
+<div style="height: auto; height: auto;">
+  <app-header-inicio></app-header-inicio>    
+  <app-loading *ngIf="data.loading"></app-loading>
+  <div class="welcome-page" [@routerTransition]>
+    <!-- Page Content -->
+    <div id="body" class="container">
 
-    <!-- Portfolio Item Heading -->
-    <div class="row">
-      <div class="col-lg-12">
-        <h1 class="page-header">Niños con cancer,
-          <small> porque los niños son importantes para Dios</small>
-        </h1>
-      </div>
-    </div>
-    <!-- /.row -->
-
-    <!-- Portfolio Item Row -->
-    <div class="row">
-      <div id="img-bg" class="col-md-8 col-sm-12">
-        <div class="row">
-          <div class="col-md-6">
-            <h1>Dona</h1>
-            <p>Ayuda a un niño con cancer, ellos necesitan tu ayuda. Ahora mismo puedes ver los niños, sus necesidades, numeros
-              de contacto, direcciones, para hacerte facil el poder ser un ente de bendicion para estas hermosas criaturas
-              de Dios, tu ayuda sera recompensada por el Dios que gobierna y reina en todo el universo.</p>
-          </div>
-          <div class="col-md-6">
-            <h1>¿Como puedo ayudar?</h1>
-            <ul>
-              <li>Con tu oración</li>
-              <li>Ayuda economica</li>
-              <li>Donando medicinas o insumos</li>
-              <li>Visitando y ayudando moral y espiritualmente</li>
-            </ul>
-          </div>
+      <!-- Portfolio Item Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">Niños con cancer,
+            <small> porque los niños son importantes para Dios</small>
+          </h1>
         </div>
-        <!-- <div class="row">
+      </div>
+      <!-- /.row -->
+
+      <!-- Portfolio Item Row -->
+      <div class="row">
+        <div id="img-bg" class="col-md-8 col-sm-12">
+          <div class="row">
+            <div class="col-md-6">
+              <h1>Dona</h1>
+              <p>Ayuda a un niño con cancer, ellos necesitan tu ayuda. Ahora mismo puedes ver los niños, sus necesidades, numeros
+                de contacto, direcciones, para hacerte facil el poder ser un ente de bendicion para estas hermosas criaturas
+                de Dios, tu ayuda sera recompensada por el Dios que gobierna y reina en todo el universo.</p>
+            </div>
+            <div class="col-md-6">
+              <h1>¿Como puedo ayudar?</h1>
+              <ul>
+                <li>Con tu oración</li>
+                <li>Ayuda economica</li>
+                <li>Donando medicinas o insumos</li>
+                <li>Visitando y ayudando moral y espiritualmente</li>
+              </ul>
+            </div>
+          </div>
+          <!-- <div class="row">
           <div class="col-md-12">
             <img class="img-responsive" src="../../assets/images/niños.png" alt="Niños con cancer">
           </div>
         </div> -->
-      </div>
+        </div>
 
-      <div id="form-login" class="col-md-4 col-sm-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <strong> Ingresa para continuar</strong>
-          </div>
-          <div class="panel-body">
-            <form [formGroup]="myForm" novalidate>
-              <fieldset>
-                <div class="row">
-                  <div class="center-block">
-                    <img class="profile-img" src="../../../assets/images/logo.png" alt="">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12 col-md-10  col-md-offset-1 ">
-                    <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-user"></i>
-                        </span>
-                        <input class="form-control" placeholder="Correo" formControlName="email" name="email" type="text" required autofocus>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-lock"></i>
-                        </span>
-                        <input class="form-control" placeholder="Contraseña" formControlName="password" name="password" type="password" value="" required>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <input type="submit" class="btn btn-lg btn-primary btn-block" value="Siguiente" (click)="onLoggedin()" [disabled]="!myForm.valid">
+        <div id="form-login" class="col-md-4 col-sm-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <strong> Ingresa para continuar</strong>
+            </div>
+            <div class="panel-body">
+              <form [formGroup]="myForm" novalidate>
+                <fieldset>
+                  <div class="row">
+                    <div class="center-block">
+                      <img class="profile-img" src="../../../assets/images/logo.png" alt="">
                     </div>
                   </div>
-                </div>
-              </fieldset>
-            </form>
-          </div>
-          <div class="panel-footer ">
-            No tienes una cuenta!
-            <a [routerLink]="['/registro']"> Registrate aqui </a>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                          </span>
+                          <input class="form-control" placeholder="Correo" formControlName="email" name="email" type="text" required autofocus>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                          </span>
+                          <input class="form-control" placeholder="Contraseña" formControlName="password" name="password" type="password" value=""
+                            required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Siguiente" (click)="onLoggedin()" [disabled]="!myForm.valid">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+            <div class="panel-footer ">
+              No tienes una cuenta!
+              <a [routerLink]="['/registro']"> Registrate aqui </a>
+            </div>
           </div>
         </div>
       </div>
+      <hr>
     </div>
-    <hr>
+    <!-- /.container -->
   </div>
-  <!-- /.container -->
-</div>
 
-<footer id="main-footer" class="main-footer">
-  <div class="pull-right hidden-xs">
-    <b>Version</b> 0.1.4
-  </div>
-  <strong>Copyleft &copy; 2017-2018 <a [routerLink]="['/inicio']">www.niñosconcancer.com.ve</a></strong> todos los derechos
-  y zurdos reservados.
-</footer>
+  <footer id="main-footer" class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 0.1.4
+    </div>
+    <strong>Copyleft &copy; 2017-2018
+      <a [routerLink]="['/inicio']">www.niñosconcancer.com.ve</a>
+    </strong> todos los derechos y zurdos reservados.
+  </footer>
+</div>

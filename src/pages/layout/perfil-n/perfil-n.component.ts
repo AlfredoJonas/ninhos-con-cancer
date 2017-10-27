@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { routerTransition } from '../../../app/router.animations';
+import { slideToLeft } from '../../../app/router.animations';
 import { Router } from '@angular/router';
 import { StateService } from '../../../shared';
 
@@ -7,7 +7,7 @@ import { StateService } from '../../../shared';
   selector: 'app-perfil-n',
   templateUrl: './perfil-n.component.html',
   styleUrls: ['./perfil-n.component.scss'],
-  animations: [routerTransition()]
+  animations: [slideToLeft()]
 })
 export class PerfilNComponent implements OnInit {
 
@@ -26,5 +26,9 @@ export class PerfilNComponent implements OnInit {
 
   openImg(img){
     $('.enlargeImageModalSource').attr('src', $('#'+img).attr('src'));
+  }
+
+  slide(id){
+    this.state.slide(id);
   }
 }

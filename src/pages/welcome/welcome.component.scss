@@ -3,6 +3,7 @@ $topnav-background-color: #222;
 .welcome-page {
 
   background-color: #d2d6de;
+  min-height: 84vh;
   
 
   .portfolio-item {
@@ -44,6 +45,7 @@ $topnav-background-color: #222;
 
   #form-login{
     margin-top: 20px;
+    z-index: 1;
   }
 
   @media (max-width: 991px){

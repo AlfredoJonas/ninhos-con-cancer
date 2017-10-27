@@ -3,15 +3,13 @@ import { NgModule } from '@angular/core';
 import { NinhoRoutingModule } from './ninho-routing.module';
 import { NinhoComponent } from './ninho.component';
 import { HeaderInicioModule } from '../../shared';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+// import { NgxAdminLteModule } from 'ngx-admin-lte';
 
 @NgModule({
     imports: [
         CommonModule,
         NinhoRoutingModule,
         HeaderInicioModule,
-        ReactiveFormsModule, 
-        FormsModule
     ],
     declarations: [
       NinhoComponent

@@ -1,53 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { routerTransition } from '../../app/router.animations';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { slideToLeft } from '../../app/router.animations';
 import { StateService } from '../../shared';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-ninho',
   templateUrl: './ninho.component.html',
   styleUrls: ['./ninho.component.scss'],
-  animations: [routerTransition()]
+  animations: [slideToLeft()]
 })
 export class NinhoComponent implements OnInit {
 
   public data: any;
-  private myForm: FormGroup;
+  private collapsed_box:any = '';
 
   constructor(
     private router: Router,
-    public state: StateService,
-    private formBuilder: FormBuilder
+    public state: StateService
   ) {
     this.data = state.data;
-    this.myForm = this.createMyForm();
   }
 
   ngOnInit() {
+    this.state.setRoute(this.router.url, 'Niño');              
   }
 
-  private createMyForm() {
-    return this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+  openImg(img){
+    $('.enlargeImageModalSource').attr('src', $('#'+img).attr('src'));
   }
 
-  onLoggedin() {
-    console.log(this.myForm.value);
-    this.state.post('/users/login', { username: this.myForm.value.email, password: this.myForm.value.password })
-      .done((data) => {
-        console.log(data);
-        this.data.user_a = data[0];
-        if(this.data.user_a.representante_id)
-        this.data.is_logged_in = true;
-        localStorage.setItem('isLoggedin', 'true');
-        this.router.navigate(['/representantes']);
-      })
-      .fail((err) => {
-        console.log("Error: " + JSON.stringify(err));
-      });
+  slide(id){
+    this.state.slide(id);
   }
 
 }

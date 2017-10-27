@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../shared';
 
+localStorage.removeItem('is_logged_in');
+
 const routes: Routes = [
     {
         path: '',
@@ -12,7 +14,7 @@ const routes: Routes = [
     { path: 'donar', loadChildren: '../pages/donate/donate.module#DonateModule' } ,
     { path: 'registro', loadChildren: '../pages/signup/signup.module#SignupModule' },
     { path: 'ninho', loadChildren: '../pages/ninho/ninho.module#NinhoModule' },
-    { path: 'representate', loadChildren: '../pages/representate/representate.module#RepresentateModule' },    
+    { path: 'representante', loadChildren: '../pages/representante/representante.module#RepresentanteModule' },    
     { path: 'no-encontrada', loadChildren: '../pages/not-found/not-found.module#NotFoundModule' },
     { path: '**', redirectTo: 'no-encontrada' }
 ];

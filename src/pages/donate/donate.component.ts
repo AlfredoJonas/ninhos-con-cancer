@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { routerTransition } from '../../app/router.animations';
+import { slideToLeft } from '../../app/router.animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StateService } from '../../shared';
 
@@ -8,7 +8,7 @@ import { StateService } from '../../shared';
   selector: 'app-donate',
   templateUrl: './donate.component.html',
   styleUrls: ['./donate.component.scss'],
-  animations: [routerTransition()]
+  animations: [slideToLeft()]
 })
 export class DonateComponent implements OnInit {
 

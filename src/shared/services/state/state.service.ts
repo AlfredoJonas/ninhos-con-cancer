@@ -12,7 +12,7 @@ export class StateService {
     municipio: [],
     estado: [],
     tipo: [],
-    requerimiento: [],
+    requerimientos: [],
     ninho_cancer: [],
     adjunto: [],
     rol: [],
@@ -30,7 +30,7 @@ export class StateService {
     user_a: {},
     is_logged_in: false,
     bread_crumb: [{ route: '/inicio', name: 'Inicio' }],
-    set_route: false
+    loading: false
   };
 
   constructor(
@@ -39,9 +39,21 @@ export class StateService {
     this.set_all();
   }
 
+  slide(id){
+    if($("."+id)[0].hidden){
+      $("."+id).slideDown();
+      $("."+id)[0].hidden = false;
+      $( "#i"+id).removeClass( "fa-plus" ).addClass( "fa-minus" );
+    }else{
+      $('.'+id).slideUp();     
+      $("."+id)[0].hidden = true;  
+      $( "#i"+id).removeClass( "fa-minus" ).addClass( "fa-plus" );      
+    }
+  }
+
   public setRoute(active_route, name_route) {
     let index = this.data.bread_crumb.findIndex((item) => item.route == active_route);
-    if (index != -1) {
+    if (index != -1 && index != this.data.bread_crumb.length-1) {
       this.data.bread_crumb.splice(index + 1, this.data.bread_crumb.length - index);
     } else {
       this.data.bread_crumb.splice(this.data.bread_crumb.length, 0, { route: active_route, name: name_route });
@@ -149,8 +161,9 @@ export class StateService {
     this.set_user('', '', '', '', '');
   }
 
-  get(ruta, obj) {
-    return this.http.get(this.url_rest + '' + ruta + '/' + obj.id);
+  get(ruta) {
+    // return this.http.get(this.url_rest + '' + ruta + '/' + obj.id);
+    return $.get(this.url_rest + '' + ruta);    
   }
   post(ruta, obj) {
     // return this.http.post(this.url_rest + '' + ruta, JSON.stringify(obj));

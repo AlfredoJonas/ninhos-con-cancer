@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { routerTransition } from '../../../app/router.animations';
+import { slideToLeft } from '../../../app/router.animations';
 import { Router } from '@angular/router';
 import { StateService } from '../../../shared';
 
@@ -7,7 +7,7 @@ import { StateService } from '../../../shared';
   selector: 'app-representantes',
   templateUrl: './representantes.component.html',
   styleUrls: ['./representantes.component.scss'],
-  animations: [routerTransition()]
+  animations: [slideToLeft()]
 })
 export class RepresentantesComponent implements OnInit {
 

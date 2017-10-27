@@ -22,6 +22,11 @@ export class HeaderComponent implements OnInit {
 
   onLoggedout() {
     this.data.is_logged_in = false;
+    localStorage.removeItem('is_logged_in');
+  }
+
+  setRoute(){
+    this.state.setRoute('/inicio','Inicio');
   }
 
 }

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { slideToLeft } from '../../app/router.animations';
+import { slideToTop } from '../../app/router.animations';
 import * as $ from 'jquery';
 
 @Component({
     selector: 'app-layout',
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss'],
-    animations: [slideToLeft()]    
+    animations: [slideToTop()]    
 })
 export class LayoutComponent implements OnInit {
 

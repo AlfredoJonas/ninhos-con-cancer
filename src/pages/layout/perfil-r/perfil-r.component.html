@@ -96,12 +96,12 @@
                 <h3 class="box-title">Agregar nuevo niño</h3>
 
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('new_child')">
+                    <i id="inew_child" class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
-              <div class="box-body">
+              <div class="box-body new_child">
                 <form role="form">
                   <div class="form-group">
                     <label>Id</label>
@@ -120,9 +120,7 @@
                     <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..."></textarea>
                   </div>
                 </form>
-              </div>
-              <div class="box-footer">
-                <button type="submit" class="btn btn-info pull-right" (click)="save()">Guardar</button>
+                <button type="submit" class="btn btn-info pull-right btn-block" (click)="save()">Guardar</button>
               </div>
             </div>
           </div>
@@ -224,7 +222,7 @@
                     </a>
                   </li>
                 </ul>
-                <a [routerLink]="['/perfil']" class="btn btn-primary btn-block">
+                <a [routerLink]="['/perfil-ninho']" class="btn btn-primary btn-block">
                   <b>ver</b>
                 </a>
               </div>
@@ -275,7 +273,7 @@
                     </a>
                   </li>
                 </ul>
-                <a [routerLink]="['/perfil']" class="btn btn-primary btn-block">
+                <a [routerLink]="['/perfil-ninho']" class="btn btn-primary btn-block">
                   <b>ver</b>
                 </a>
               </div>
@@ -316,7 +314,7 @@
                     </a>
                   </li>
                 </ul>
-                <a [routerLink]="['/perfil']" class="btn btn-primary btn-block">
+                <a [routerLink]="['/perfil-ninho']" class="btn btn-primary btn-block">
                   <b>ver</b>
                 </a>
               </div>

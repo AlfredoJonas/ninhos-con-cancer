@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { routerTransition } from '../../../app/router.animations';
+import { slideToLeft } from '../../../app/router.animations';
 import { Router } from '@angular/router';
 import { StateService } from '../../../shared';
 
@@ -8,7 +8,7 @@ import { StateService } from '../../../shared';
     selector: 'app-perfil-r',
     templateUrl: './perfil-r.component.html',
     styleUrls: ['./perfil-r.component.scss'],
-    animations: [routerTransition()]
+    animations: [slideToLeft()]
 })
 export class PerfilRComponent implements OnInit {
   
@@ -24,6 +24,10 @@ export class PerfilRComponent implements OnInit {
 
     ngOnInit() {
       // setTimeout(() => {  }, 3000);  
+    }
+
+    slide(id){
+      this.state.slide(id);
     }
 
 }

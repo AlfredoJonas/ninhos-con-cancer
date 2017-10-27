@@ -174,12 +174,12 @@
                 <h3 class="box-title">Agregar nuevo requerimiento</h3>
 
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-plus"></i>
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('new_requirement')">
+                    <i id="inew_requirement" class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
-              <div class="box-body">
+              <div class="box-body new_requirement">
                 <form role="form">
                   <div class="form-group">
                     <label>Descripción situación</label>
@@ -211,10 +211,9 @@
                     <input type="file" name="img" multiple>
                   </div>
                 </form>
+                <button type="submit" class="btn btn-info pull-right btn-block" (click)="save()">Guardar</button>
               </div>
-              <div class="box-footer">
-                <button type="submit" class="btn btn-info pull-right" (click)="save()">Guardar</button>
-              </div>
+
             </div>
           </div>
         </div>
@@ -225,12 +224,12 @@
                 <h3 class="box-title">Vitamina C</h3>
 
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-minus"></i>
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c1')">
+                    <i id="ic1" class="fa fa-minus"></i>
                   </button>
                 </div>
               </div>
-              <div class="box-body">
+              <div class="box-body c1">
                 <div class="box-footer no-padding">
                   <ul class="nav nav-stacked">
                     <li>
@@ -253,8 +252,7 @@
                     </li>
                   </ul>
                 </div>
-                <img id="img1" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
-                  (click)="openImg('img1')">
+                <img id="img1" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img1')">
               </div>
             </div>
           </div>
@@ -264,12 +262,12 @@
                 <h3 class="box-title">Vitamina Z</h3>
 
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-minus"></i>
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c2')">
+                    <i id="ic2" class="fa fa-minus"></i>
                   </button>
                 </div>
               </div>
-              <div class="box-body">
+              <div class="box-body c2">
                 <div class="box-footer no-padding">
                   <ul class="nav nav-stacked">
                     <li>
@@ -292,10 +290,8 @@
                     </li>
                   </ul>
                 </div>
-                <img id="img2" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
-                  (click)="openImg('img2')">
-                <img id="img3" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
-                  (click)="openImg('img3')">
+                <img id="img2" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img2')">
+                <img id="img3" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img3')">
               </div>
             </div>
           </div>
@@ -305,12 +301,12 @@
                 <h3 class="box-title">Vitamina X</h3>
 
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-minus"></i>
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c3')">
+                    <i id="ic3" class="fa fa-minus"></i>
                   </button>
                 </div>
               </div>
-              <div class="box-body">
+              <div class="box-body c3">
                 <div class="box-footer no-padding">
                   <ul class="nav nav-stacked">
                     <li>
@@ -333,14 +329,10 @@
                     </li>
                   </ul>
                 </div>
-                <img id="img4" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
-                  (click)="openImg('img4')">
-                <img id="img5" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
-                  (click)="openImg('img5')">
-                <img id="img6" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
-                  (click)="openImg('img6')">
-                <img id="img7" src="https://placeholdit.imgix.net/~text?txtsize=72&txt=Image%201&w=1920&h=1080" data-toggle="modal" data-target="#myModaZoom"
-                  (click)="openImg('img7')">
+                <img id="img4" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img4')">
+                <img id="img5" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img5')">
+                <img id="img6" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img6')">
+                <img id="img7" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img7')">
               </div>
             </div>
           </div>

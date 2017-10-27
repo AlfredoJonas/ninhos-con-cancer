@@ -3,11 +3,11 @@ import { Router, NavigationEnd } from '@angular/router';
 import { StateService } from '../../services/state/state.service';
 
 @Component({
-  selector: 'app-header-inicio',
-  templateUrl: './header-inicio.component.html',
-  styleUrls: ['./header-inicio.component.scss']
+  selector: 'app-loading',
+  templateUrl: './loading.component.html',
+  styleUrls: ['./loading.component.scss']
 })
-export class HeaderInicioComponent implements OnInit {
+export class LoadingComponent implements OnInit {
 
   public data: any;
 
@@ -20,8 +20,8 @@ export class HeaderInicioComponent implements OnInit {
 
   ngOnInit() { }
 
-  setRoute() {
-    this.state.setRoute('/inicio', 'Inicio');
+  done(){
+    this.data.loading = false;
   }
 
 }

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { WelcomeRoutingModule } from './welcome-routing.module';
 import { WelcomeComponent } from './welcome.component';
-import { HeaderInicioModule } from '../../shared';
+import { HeaderInicioModule, LoadingModule } from '../../shared';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -11,7 +11,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
         WelcomeRoutingModule,
         HeaderInicioModule,
         ReactiveFormsModule, 
-        FormsModule
+        FormsModule,
+        LoadingModule
     ],
     declarations: [
       WelcomeComponent

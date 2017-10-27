@@ -6,17 +6,16 @@ import { StateService } from '../services/state/state.service';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private router: Router
+    private router: Router,
+    public state: StateService
   ) { }
 
-  canActivate(route: Router,
-    state: StateService) {
-    // state.data.is_logged_in = true;    
-    if (state.data.is_logged_in) {
+  canActivate() {
+    
+    if (localStorage.getItem('is_logged_in')) {
       return true;
     }
     this.router.navigate(['/inicio']); 
-    alert(state.data.is_logged_in);    
     return false;
   }
 }

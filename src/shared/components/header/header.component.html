@@ -21,7 +21,7 @@
         <li class="dropdown user user-menu">
           <a  class="dropdown-toggle" data-toggle="dropdown">
             <img src="../../../../assets/images/user_profile.png" class="user-image" alt="User Image">
-            <span class="hidden-xs">Jonas Gonzalez</span>
+            <span class="hidden-xs">{{data.user_a.username}}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -29,7 +29,7 @@
               <img src="../../../../assets/images/user_profile.png" class="img-circle" alt="User Image">
 
               <p>
-                Jonas Gonzalez - 24.112.983
+                {{data.user_a.username}} - {{data.user_a.email}}
                 <small></small>
               </p>
             </li>
@@ -37,7 +37,7 @@
             <li class="user-body">
               <div class="row">
                 <div class="col-xs-12 text-center">
-                  <p>Administrador</p>
+                  <p>{{data.user_a.rol.descripcion}}</p>
                 </div>
               </div>
               <!-- /.row -->
@@ -45,8 +45,8 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a [routerLink]="['/perfil-administrador']" class="btn btn-default btn-flat" *ngIf="data.user_a.rol_id == '1'">Perfil</a>                
-                <a [routerLink]="['/perfil-representante']" class="btn btn-default btn-flat" *ngIf="data.user_a.rol_id == '2'">Perfil</a>
+                <a [routerLink]="['/perfil-administrador']" class="btn btn-default btn-flat" *ngIf="data.user_a.rol_id == '1'" (click)="setRoute()">Perfil</a>                
+                <a [routerLink]="['/perfil-representante']" class="btn btn-default btn-flat" *ngIf="data.user_a.rol_id == '2'" (click)="setRoute()">Perfil</a>
               </div>
               <div class="pull-right">
                 <a [routerLink]="['/inicio']" class="btn btn-default btn-flat" (click)="onLoggedout()">Salir</a>

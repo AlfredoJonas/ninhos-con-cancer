@@ -1,6 +1,6 @@
 <app-header-inicio></app-header-inicio>
 
-<div [@routerTransition]>
+<div class="representante-page" [@routerTransition]>
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
@@ -44,7 +44,7 @@
               </li>
             </ul>
 
-            <a href="#" class="btn btn-primary btn-block">
+            <a href="#" class="btn btn-primary btn-block" *ngIf="data.user_a.is_logged_in">
               <b>Editar</b>
             </a>
           </div>
@@ -83,7 +83,7 @@
             <p>Táchira</p>
           </div>
 
-          <a href="#" class="btn btn-primary btn-block">
+          <a href="#" class="btn btn-primary btn-block" *ngIf="data.user_a.is_logged_in">
             <b>Editar</b>
           </a>
           <!-- /.box-body -->
@@ -92,44 +92,6 @@
       </div>
       <div class="col-md-7">
         <div class="row">
-          <div class="col-md-12">
-            <div class="box box-success box-solid collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title">Agregar nuevo niño</h3>
-
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-plus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="box-body">
-                <form role="form">
-                  <div class="form-group">
-                    <label>Id</label>
-                    <input type="text" class="form-control" placeholder="c-10">
-                  </div>
-                  <div class="form-group">
-                    <label>Nombre</label>
-                    <input type="text" class="form-control" placeholder="c-10">
-                  </div>
-                  <div class="form-group">
-                    <label>Apellido</label>
-                    <input type="text" class="form-control" placeholder="c-10">
-                  </div>
-                  <div class="form-group">
-                    <label>Descripción de la situación</label>
-                    <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..."></textarea>
-                  </div>
-                </form>
-              </div>
-              <div class="box-footer">
-                <button type="submit" class="btn btn-info pull-right" (click)="save()">Guardar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
           <div class="col-md-6">
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user-2">
@@ -165,7 +127,7 @@
                     </a>
                   </li>
                 </ul>
-                <a [routerLink]="['/perfil-ninho']" class="btn btn-primary btn-block">
+                <a [routerLink]="['/ninho']" class="btn btn-primary btn-block">
                   <b>ver</b>
                 </a>
               </div>
@@ -226,7 +188,7 @@
                     </a>
                   </li>
                 </ul>
-                <a [routerLink]="['/perfil']" class="btn btn-primary btn-block">
+                <a [routerLink]="['/ninho']" class="btn btn-primary btn-block">
                   <b>ver</b>
                 </a>
               </div>
@@ -277,7 +239,7 @@
                     </a>
                   </li>
                 </ul>
-                <a [routerLink]="['/perfil']" class="btn btn-primary btn-block">
+                <a [routerLink]="['/ninho']" class="btn btn-primary btn-block">
                   <b>ver</b>
                 </a>
               </div>
@@ -318,7 +280,7 @@
                     </a>
                   </li>
                 </ul>
-                <a [routerLink]="['/perfil']" class="btn btn-primary btn-block">
+                <a [routerLink]="['/ninho']" class="btn btn-primary btn-block">
                   <b>ver</b>
                 </a>
               </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { routerTransition } from '../../app/router.animations';
+import { slideToTop } from '../../app/router.animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StateService } from '../../shared';
 
@@ -8,7 +8,7 @@ import { StateService } from '../../shared';
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
-  animations: [routerTransition()]
+  animations: [slideToTop()]
 })
 export class WelcomeComponent implements OnInit {
 
@@ -35,21 +35,40 @@ export class WelcomeComponent implements OnInit {
   }
 
   onLoggedin() {
-    console.log(this.myForm.value);
+    this.data.loading = true;
     this.state.post('/users/login', { username: this.myForm.value.email, password: this.myForm.value.password })
       .done((data) => {
-        console.log(data);
-        if(data){
-          alert('success');
+        if (data.length > 0) {
           this.data.user_a = data[0];
-          this.data.is_logged_in = true;
+          /* this.data.user_a.is_logged_in = true;
+          localStorage.setItem('is_logged_in', this.data.user_a.is_logged_in);
           this.router.navigate(['/representantes']);
-        }else{
+          this.data.loading = false; */
+          this.state.get('/roles/'+this.data.user_a.rol_id)
+            .done((data) => {
+              console.log(data);
+              this.data.user_a.rol = data[0]; 
+              this.data.user_a.is_logged_in = true;
+              this.data.loading = false;                            
+              localStorage.setItem('is_logged_in', this.data.user_a.is_logged_in);
+              if(this.data.user_a.rol_id == '1'){
+                this.router.navigate(['/representantes']);
+              }else{
+                this.router.navigate(['/perfil-representante']);
+              }
+            })
+            .fail((err) => {
+              console.log("Error: " + JSON.stringify(err));
+              this.data.loading = false;
+            });
+        } else {
           alert('Usuario o contraseña invalidos!');
+          this.data.loading = false;
         }
       })
       .fail((err) => {
         console.log("Error: " + JSON.stringify(err));
+        this.data.loading = false;        
       });
   }
 

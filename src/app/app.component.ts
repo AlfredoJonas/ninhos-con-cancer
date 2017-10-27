@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { StateService } from '../shared';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
