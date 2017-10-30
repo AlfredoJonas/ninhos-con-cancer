@@ -24,6 +24,7 @@ export class NinhoComponent implements OnInit {
     this.state.setRoute(this.router.url, 'Niño');
 
     let all_resources = [];
+    this.data.loading = true;    
     this.state.get('/ninhos/'+ this.data.ninho_a.id +'/requerimientos')
       .done((data) => {
         console.log(data);
