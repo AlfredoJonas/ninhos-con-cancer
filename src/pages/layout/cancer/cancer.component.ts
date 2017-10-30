@@ -22,5 +22,16 @@ export class CancerComponent implements OnInit {
 
   ngOnInit() {
     this.state.setRoute(this.router.url, 'Cancer');
+
+    this.data.loading = true;
+    this.state.get(`/cancer`)
+      .done((cancer) => {
+        this.data.cancer = cancer;
+        this.data.loading = false;
+      })
+      .fail((err) => {
+        console.log("Error: " + JSON.stringify(err));
+        this.data.loading = false;
+      });
   }
 }

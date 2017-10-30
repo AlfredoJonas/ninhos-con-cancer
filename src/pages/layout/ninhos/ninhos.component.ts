@@ -16,13 +16,24 @@ export class NinhosComponent implements OnInit {
   constructor(
     private router: Router,
     public state: StateService
-  ) { 
+  ) {
     this.data = state.data;
     console.log(this.data);
   }
 
   ngOnInit() {
-    this.state.setRoute(this.router.url, 'Niños');    
+    this.state.setRoute(this.router.url, 'Niños');
+
+    this.data.loading = true;
+    this.state.get(`/ninhos`)
+      .done((ninhos) => {
+        this.data.ninhos = ninhos;
+        this.data.loading = false;
+      })
+      .fail((err) => {
+        console.log("Error: " + JSON.stringify(err));
+        this.data.loading = false;
+      });
   }
 
   goNinho() {

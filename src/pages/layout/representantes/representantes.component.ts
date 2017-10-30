@@ -27,6 +27,7 @@ export class RepresentantesComponent implements OnInit {
     this.state.get(`/representantes`)
       .done((representantes) => {
         this.data.representantes = representantes;
+        this.data.loading = false;
       })
       .fail((err) => {
         console.log("Error: " + JSON.stringify(err));

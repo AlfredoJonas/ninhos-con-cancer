@@ -21,6 +21,17 @@ export class TipoRComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.state.setRoute(this.router.url, 'Tipos Requerimiento');    
+    this.state.setRoute(this.router.url, 'Tipos Requerimiento');
+
+    this.data.loading = true;
+    this.state.get(`/tipo`)
+      .done((tipo) => {
+        this.data.tipo = tipo;
+        this.data.loading = false;
+      })
+      .fail((err) => {
+        console.log("Error: " + JSON.stringify(err));
+        this.data.loading = false;
+      });
   }
 }
