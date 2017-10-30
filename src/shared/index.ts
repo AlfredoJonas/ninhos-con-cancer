@@ -3,3 +3,4 @@ export * from './components';
 export * from './modules';
 export * from './services';
 export * from './guard/auth.guard';
+export * from './guard/auth.donate';

@@ -20,8 +20,8 @@ export class LoadingComponent implements OnInit {
 
   ngOnInit() { }
 
-  done(){
+  /* done(){
     this.data.loading = false;
-  }
+  } */
 
 }

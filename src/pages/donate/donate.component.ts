@@ -24,6 +24,8 @@ export class DonateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.data.is_donate = true;
+    localStorage.setItem('is_donate', this.data.is_donate);    
     this.state.setRoute(this.router.url, 'Donar');
 
     var ninhos = [];

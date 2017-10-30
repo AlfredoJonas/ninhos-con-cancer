@@ -119,6 +119,8 @@ export class WelcomeComponent implements OnInit {
                     console.log("Error: " + JSON.stringify(err));
                     this.data.loading = false;
                   });
+
+                  
                 // Aqui traer los niños de este representantes con todos los cancer
               })
               .fail((err) => {
