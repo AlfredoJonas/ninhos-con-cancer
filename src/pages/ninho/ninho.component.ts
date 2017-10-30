@@ -24,17 +24,17 @@ export class NinhoComponent implements OnInit {
     this.state.setRoute(this.router.url, 'Niño');
 
     let all_resources = [];
-    this.data.loading = true;    
-    this.state.get('/ninhos/'+ this.data.ninho_a.id +'/requerimientos')
-      .done((data) => {
-        console.log(data);
-        this.data.ninho_a.requerimientos = data;
-        this.data.ninho_a.requerimientos.forEach(tipo => {
+    this.data.loading = true;
+    this.state.get(`/ninhos/${this.data.ninho_a.id}/requerimientos`)
+      .done((requerimientos) => {
+        console.log(requerimientos);
+        requerimientos.forEach(tipo => {
           all_resources.push(true);
-          this.state.get('/tipos/'+ tipo.tipo_id)
+          this.state.get('/tipos/' + tipo.tipo_id)
             .done((data) => {
               console.log(data);
               tipo.tipo = data;
+              this.data.ninho_a.requerimientos = requerimientos;              
               all_resources.splice(0, 1);
               if (all_resources.length == 0) {
                 this.data.loading = false;
@@ -50,6 +50,10 @@ export class NinhoComponent implements OnInit {
         console.log("Error: " + JSON.stringify(err));
         this.data.loading = false;
       });
+  }
+
+  goRepresentante() {
+    this.data.representante_a.cedula = this.data.ninho_a.representante_cedula;
   }
 
   openImg(img) {
