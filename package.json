@@ -30,6 +30,7 @@
     "datatables.net-dt": "^1.10.16",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
+    "ngx-admin-lte": "^0.6.4",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },
