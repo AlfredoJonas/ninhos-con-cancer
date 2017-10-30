@@ -34,7 +34,7 @@ export class NinhoComponent implements OnInit {
             .done((data) => {
               console.log(data);
               tipo.tipo = data;
-              this.data.ninho_a.requerimientos = requerimientos;              
+              this.data.ninho_a.requerimientos = requerimientos;
               all_resources.splice(0, 1);
               if (all_resources.length == 0) {
                 this.data.loading = false;
@@ -54,6 +54,55 @@ export class NinhoComponent implements OnInit {
 
   goRepresentante() {
     this.data.representante_a.cedula = this.data.ninho_a.representante_cedula;
+
+    let all_resources = [];
+    this.data.loading = true;
+    this.state.get('/representantes/' + this.data.representante_a.cedula)
+      .done((representante) => {
+        console.log(representante);
+        all_resources.push(true);
+        this.state.get('/users/')
+          .done((users) => {
+            console.log(users);
+            users.forEach(user => {
+              if (user.representante_cedula == representante.cedula) {
+                representante.user = user;
+              }
+            });
+            this.state.get('/municipios/' + representante.municipio_id)
+              .done((municipio) => {
+                console.log(municipio);
+                this.state.get('/estados/' + municipio.estado_id)
+                  .done((data) => {
+                    console.log(data);
+                    municipio.estado = data;
+                    representante.municipio = municipio;
+                    this.data.representante_a = representante;
+                    all_resources.splice(0, 1);
+                    if (all_resources.length == 0) {
+                      this.data.loading = false;
+                      this.router.navigate(['/representante']);                       
+                    }
+                  })
+                  .fail((err) => {
+                    console.log("Error: " + JSON.stringify(err));
+                    this.data.loading = false;
+                  });
+              })
+              .fail((err) => {
+                console.log("Error: " + JSON.stringify(err));
+                this.data.loading = false;
+              });
+          })
+          .fail((err) => {
+            console.log("Error: " + JSON.stringify(err));
+            this.data.loading = false;
+          });
+      })
+      .fail((err) => {
+        console.log("Error: " + JSON.stringify(err));
+        this.data.loading = false;
+      });
   }
 
   openImg(img) {

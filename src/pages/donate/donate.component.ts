@@ -30,19 +30,20 @@ export class DonateComponent implements OnInit {
     let all_resources = [];
     this.data.loading = true;
     this.state.get('/ninhos')
-      .done((ninhos) => {
-        console.log(ninhos);
+      .done((data1) => {
+        console.log(data1);
+        ninhos = data1;
         ninhos.forEach(ninho => {
           this.state.get('/ninhos/' + ninho.id + '/cancer')
-            .done((cancer) => {
-              console.log(cancer);
-              ninho.cancer = cancer;
-              cancer.forEach(cancer => {
+            .done((data2) => {
+              console.log(data2);
+              ninho.cancer = data2;
+              data2.forEach(cancer => {
                 all_resources.push(true);
                 this.state.get('/cancer/' + cancer.id)
-                  .done((cancer1) => {
-                    console.log(cancer1);
-                    cancer.cancer = cancer1;
+                  .done((data3) => {
+                    console.log(data3);
+                    cancer.cancer = data3;
                     all_resources.splice(0, 1);
                     if (all_resources.length == 0) {
                       this.data.loading = false;
