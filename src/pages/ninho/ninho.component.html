@@ -68,27 +68,50 @@
           <div class="box-body box-profile">
             <img class="profile-user-img img-responsive img-circle" src="../../../assets/images/user_profile.png" alt="Imagen de usuario">
 
-            <h3 class="profile-username text-center">Sanoj94</h3>
+            <h3 class="profile-username text-center">{{data.ninho_a.nombre}}</h3>
 
-            <p class="text-muted text-center">Se encuentra en cama en estos momentos</p>
+            <p class="text-muted text-center">{{data.ninho_a.descripcion}}</p>
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
                 <b>Nombre</b>
-                <p class="pull-right">Edwin Leandro</p>
+                <p class="pull-right">{{data.ninho_a.nombre}}</p>
               </li>
               <li class="list-group-item">
                 <b>Apellido</b>
-                <p class="pull-right">Vargas Apaclia</p>
+                <p class="pull-right">{{data.ninho_a.apellido}}</p>
               </li>
             </ul>
-            <a [routerLink]="['/representante']" class="btn btn-primary btn-block" >
+            <a [routerLink]="['/representante']" class="btn btn-primary btn-block">
               <b>Ver representante</b>
             </a>
           </div>
           <!-- /.box-body -->
         </div>
         <!-- /.box -->
+        <!-- About Me Box -->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Tipos de Cancer</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div *ngFor="let cancer of data.ninho_a.cancer">
+              <strong>
+                <div class="row">
+                  <div class="col-md-9">
+                    <i class="fa fa-medkit" aria-hidden="true"></i> {{cancer.cancer.nombre}}
+                  </div>
+                  <div class="col-md-3">
+                      {{cancer.descripcion}}
+                  </div>
+                </div>
+              </strong>
+              <hr>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
       </div>
       <div id="myModaZoom" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -108,121 +131,36 @@
       </div>
       <div class="col-md-7">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6" *ngFor="let requerimiento of data.ninho_a.requerimientos">
             <div class="box box-warning box-solid">
               <div class="box-header with-border">
-                <h3 class="box-title">Vitamina C</h3>
+                <h3 class="box-title">{{requerimiento.tipo.descripcion}}</h3>
 
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c1')">
-                    <i id="ic1" class="fa fa-minus"></i>
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c'+requerimiento.id)">
+                    <i id="ic{{requerimiento}}" class="fa fa-minus"></i>
                   </button>
                 </div>
               </div>
-              <div class="box-body c1">
+              <div class="box-body c{{requerimiento.id}}">
                 <div class="box-footer no-padding">
                   <ul class="nav nav-stacked">
                     <li>
-                      <a>Una vitamina muy necesaria</a>
+                      <a>{{requerimiento.descripcion}}</a>
                     </li>
                     <li>
                       <a>Cantidad
-                        <span class="pull-right badge bg-blue">5</span>
+                        <span class="pull-right badge bg-blue">{{requerimiento.cantidad}}</span>
                       </a>
                     </li>
                     <li>
                       <a>Fecha vencimiento
-                        <span class="pull-right badge bg-blue">22/10/2017</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>Requerimiento
-                        <span class="pull-right badge bg-blue">Vitaminas</span>
+                        <span class="pull-right badge bg-blue">{{requerimiento.fecha_vencimiento}}</span>
                       </a>
                     </li>
                   </ul>
                 </div>
                 <img id="img1" src="../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img1')">
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="box box-warning box-solid">
-              <div class="box-header with-border">
-                <h3 class="box-title">Vitamina Z</h3>
-
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c2')">
-                    <i id="ic2" class="fa fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="box-body c2" >
-                <div class="box-footer no-padding">
-                  <ul class="nav nav-stacked">
-                    <li>
-                      <a>Una vitamina muy necesaria</a>
-                    </li>
-                    <li>
-                      <a>Cantidad
-                        <span class="pull-right badge bg-blue">5</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>Fecha vencimiento
-                        <span class="pull-right badge bg-blue">22/10/2017</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>Requerimiento
-                        <span class="pull-right badge bg-blue">Vitaminas</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <img id="img2" src="../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img2')">
-                <img id="img3" src="../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img3')">
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="box box-warning box-solid">
-              <div class="box-header with-border">
-                <h3 class="box-title">Vitamina X</h3>
-
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c3')">
-                    <i id="ic3" class="fa fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="box-body c3">
-                <div class="box-footer no-padding">
-                  <ul class="nav nav-stacked">
-                    <li>
-                      <a>Una vitamina muy necesaria</a>
-                    </li>
-                    <li>
-                      <a>Cantidad
-                        <span class="pull-right badge bg-blue">5</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>Fecha vencimiento
-                        <span class="pull-right badge bg-blue">22/10/2017</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>Requerimiento
-                        <span class="pull-right badge bg-blue">Vitaminas</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <img id="img4" src="../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img4')">
-                <img id="img5" src="../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img5')">
-                <img id="img6" src="../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img6')">
-                <img id="img7" src="../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img7')">
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+<app-loading *ngIf="data.loading"></app-loading>
 <app-header-inicio></app-header-inicio>
 <div class="login-page" [@routerTransition]>
   <div class="container">
@@ -8,7 +9,7 @@
             <strong> Registrate para continuar</strong>
           </div>
           <div class="panel-body">
-            <form role="form">
+            <form role="form" ngNativeValidate>
               <fieldset>
                 <div class="row">
                   <div class="center-block">
@@ -22,7 +23,7 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-user"></i>
                         </span>
-                        <input class="form-control" placeholder="Correo" name="loginname" type="email" required autofocus>
+                        <input class="form-control" placeholder="Correo" [(ngModel)]="user_new.email" name="email" type="email" required autofocus>
                       </div>
                     </div>
                     <div class="form-group">
@@ -30,7 +31,7 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-user"></i>
                         </span>
-                        <input class="form-control" placeholder="Nombre de usuario" name="nombre-usuario" type="text" value="" required>
+                        <input class="form-control" placeholder="Nombre de usuario" [(ngModel)]="user_new.username" name="username" type="text" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -38,7 +39,7 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-lock"></i>
                         </span>
-                        <input class="form-control" placeholder="Contraseña" name="password" type="password" value="" required>
+                        <input class="form-control" placeholder="Contraseña" [(ngModel)]="user_new.password" name="password" type="password" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -46,7 +47,7 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-credit-card"></i>
                         </span>
-                        <input class="form-control" placeholder="Cedula" name="cedula" type="number" value="" required>
+                        <input class="form-control" placeholder="Cedula" [(ngModel)]="user_new.cedula" name="cedula" type="number" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -54,7 +55,7 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-user"></i>
                         </span>
-                        <input class="form-control" placeholder="Nombre" name="nombre" type="text" value="" required>
+                        <input class="form-control" placeholder="Nombre" [(ngModel)]="user_new.nombre" name="nombre" type="text" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -62,7 +63,7 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-user"></i>
                         </span>
-                        <input class="form-control" placeholder="Apellido" name="apellido" type="text" value="" required>
+                        <input class="form-control" placeholder="Apellido" [(ngModel)]="user_new.apellido" name="apellido" type="text" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -70,7 +71,8 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-phone"></i>
                         </span>
-                        <input class="form-control" placeholder="Numero de contacto 1" name="numero-contacto-1" type="phone" value="" required>
+                        <input class="form-control" placeholder="Numero de contacto 1" [(ngModel)]="user_new.numero_contacto_1" name="numero_contacto_1"
+                          type="tel" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -78,7 +80,8 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-phone"></i>
                         </span>
-                        <input class="form-control" placeholder="Numero de contacto 2" name="numero-contacto-2" type="phone" value="" required>
+                        <input class="form-control" placeholder="Numero de contacto 2" [(ngModel)]="user_new.numero_contacto_2" name="numero_contacto_2"
+                          type="tel" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -86,10 +89,9 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-map-marker"></i>
                         </span>
-                        <select class="form-control selectpicker" required>
-                          <option selected>Estado</option>
-                          <option>Merida</option>
-                          <option>Trujillo</option>
+                        <select class="form-control" [(ngModel)]="user_new.estado_id" name="select_estado" (ngModelChange)="changeEstate()">
+                          <option [ngValue]="null">Estado</option>
+                          <option [ngValue]="estado.id" *ngFor="let estado of data.estados">{{estado.descripcion}}</option>
                         </select>
                       </div>
                     </div>
@@ -98,10 +100,9 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-map-marker"></i>
                         </span>
-                        <select class="form-control selectpicker" required>
-                          <option selected>Municipio</option>
-                          <option>Merida</option>
-                          <option>Trujillo</option>
+                        <select class="form-control" [(ngModel)]="user_new.municipio_id" name="select_municipio">
+                          <option [ngValue]="null">Municipio</option>
+                          <option [ngValue]="municipio.id" *ngFor="let municipio of data.estado_a.municipios">{{municipio.descripcion}}</option>
                         </select>
                       </div>
                     </div>

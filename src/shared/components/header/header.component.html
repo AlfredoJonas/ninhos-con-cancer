@@ -1,6 +1,6 @@
 <header class="main-header">
   <!-- Logo -->
-  <a [routerLink]="['/representantes']" class="logo">
+  <a class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">
       <b>N</b>CC</span>
@@ -45,8 +45,8 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a [routerLink]="['/perfil-administrador']" class="btn btn-default btn-flat" *ngIf="data.user_a.rol_id == '1'" (click)="setRoute()">Perfil</a>                
-                <a [routerLink]="['/perfil-representante']" class="btn btn-default btn-flat" *ngIf="data.user_a.rol_id == '2'" (click)="setRoute()">Perfil</a>
+                <a [routerLink]="['/perfil-administrador']" class="btn btn-default btn-flat" *ngIf="data.user_a.rol_id == '1'" (click)="setRoute('/perfil-administrador')">Perfil</a>                
+                <a [routerLink]="['/perfil-representante']" class="btn btn-default btn-flat" *ngIf="data.user_a.rol_id == '2'" (click)="setRoute('/perfil-representante')">Perfil</a>
               </div>
               <div class="pull-right">
                 <a [routerLink]="['/inicio']" class="btn btn-default btn-flat" (click)="onLoggedout()">Salir</a>

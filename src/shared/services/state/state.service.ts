@@ -39,6 +39,10 @@ export class StateService {
     this.set_all();
   }
 
+  changeEstate(id) {
+    this.data.estado_a = this.data.estados[this.data.estados.findIndex((item) => item.id == id)];
+  }
+
   slide(id){
     if($("."+id)[0].hidden){
       $("."+id).slideDown();
@@ -51,13 +55,16 @@ export class StateService {
     }
   }
 
-  public setRoute(active_route, name_route) {
-    let index = this.data.bread_crumb.findIndex((item) => item.route == active_route);
-    if (index != -1 && index != this.data.bread_crumb.length-1) {
-      this.data.bread_crumb.splice(index + 1, this.data.bread_crumb.length - index);
-    } else {
-      this.data.bread_crumb.splice(this.data.bread_crumb.length, 0, { route: active_route, name: name_route });
+  setRoute(active_route, name_route){
+    if(this.data.bread_crumb[this.data.bread_crumb.length-1].route != active_route){
+      let index = this.data.bread_crumb.findIndex((item) => item.route == active_route);
+      if (index != -1 && index != this.data.bread_crumb.length-1) {
+        this.data.bread_crumb.splice(index + 1, this.data.bread_crumb.length - index);
+      } else {
+        this.data.bread_crumb.splice(this.data.bread_crumb.length, 0, { route: active_route, name: name_route });
+      }
     }
+    console.log(this.data.bread_crumb);
   }
 
   set_representante(cedula, nombre, apellido, numero_contacto_1, numero_contacto_2, user_id, municipio_id) {
@@ -159,18 +166,30 @@ export class StateService {
     this.set_estado('', '');
     this.set_municipio('', '');
     this.set_user('', '', '', '', '');
+    this.data.is_logged_in = false;
+    this.data.bread_crumb = [{ route: '/inicio', name: 'Inicio' }];
+    this.data.loading = false;
   }
 
   get(ruta) {
     // return this.http.get(this.url_rest + '' + ruta + '/' + obj.id);
-    return $.get(this.url_rest + '' + ruta);    
+    return $.get(this.url_rest + '' + ruta);
   }
   post(ruta, obj) {
     // return this.http.post(this.url_rest + '' + ruta, JSON.stringify(obj));
     return $.post(this.url_rest + '' + ruta, obj);
   }
-  put(obj) {
-    return this.http.put(this.url_rest + '' + obj.ruta, JSON.stringify(obj));
+  put(ruta, obj) {
+    // return $.delete('');
+    $.ajax({
+      url: this.url_rest + '' + ruta, // your api url
+      // jQuery < 1.9.0 -> use type
+      // jQuery >= 1.9.0 -> use method
+      method: 'PUT', // method is any HTTP method
+      data: obj, // data as js object
+      success: function (data) { console.log(data); this.data.loading = false; }
+    });
+    // return this.http.put(this.url_rest + '' + ruta, obj);
   }
   delete(obj) {
     return this.http.delete(this.url_rest + '' + obj.ruta + '/' + obj.id);

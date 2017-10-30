@@ -30,7 +30,7 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">NAVEGACION PRINCIPAL</li>
       <li *ngIf="data.user_a.rol_id == '2'">
-        <a [routerLink]="['/perfil-representante']" (click)="setRoute()">
+        <a [routerLink]="['/perfil-representante']" (click)="setRoute('/perfil-representante')">
           <i class="fa fa-male" aria-hidden="true"></i>
           <span> Perfil</span>
           <span class="pull-right-container">
@@ -39,7 +39,7 @@
         </a>
       </li>
       <li *ngIf="data.user_a.rol_id == '1'">
-        <a [routerLink]="['/representantes']" (click)="setRoute()">
+        <a [routerLink]="['/representantes']" (click)="setRoute('/representantes')">
           <i class="fa fa-male" aria-hidden="true"></i>
           <span> Representantes</span>
           <span class="pull-right-container">
@@ -48,7 +48,7 @@
         </a>
       </li>
       <li *ngIf="data.user_a.rol_id == '1'">
-        <a [routerLink]="['/ninhos']" (click)="setRoute()">
+        <a [routerLink]="['/ninhos']" (click)="setRoute('/ninhos')">
           <i class="fa fa-child" aria-hidden="true"></i>
           <span> Niños</span>
           <span class="pull-right-container">
@@ -57,7 +57,7 @@
         </a>
       </li>
       <li *ngIf="data.user_a.rol_id == '1'">
-        <a [routerLink]="['/cancer']" (click)="setRoute()">
+        <a [routerLink]="['/cancer']" (click)="setRoute('/cancer')">
           <i class="fa fa-heart" aria-hidden="true"></i>
           <span> Cancer</span>
           <span class="pull-right-container">
@@ -66,7 +66,7 @@
         </a>
       </li>
       <li *ngIf="data.user_a.rol_id == '1'">
-        <a [routerLink]="['/tipos-requerimiento']" (click)="setRoute()">
+        <a [routerLink]="['/tipos-requerimiento']" (click)="setRoute('/tipos-requerimiento')">
           <i class="fa fa-gift" aria-hidden="true"></i>
           <span> Tipos de requerimiento</span>
           <span class="pull-right-container">
@@ -84,11 +84,11 @@
         </a>
         <ul class="treeview-menu">
           <li>
-            <a [routerLink]="['/municipios']" (click)="setRoute()">
+            <a [routerLink]="['/municipios']" (click)="setRoute('/municipios')">
               <i class="fa fa-circle-o"></i> Municipios</a>
           </li>
           <li>
-            <a [routerLink]="['/estados']" (click)="setRoute()">
+            <a [routerLink]="['/estados']" (click)="setRoute('/estados')">
               <i class="fa fa-circle-o"></i> Estados</a>
           </li>
         </ul>

@@ -1,14 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { SignupRoutingModule } from './signup-routing.module';
 import { SignupComponent } from './signup.component';
-import { HeaderInicioModule } from '../../shared';
+import { HeaderInicioModule, LoadingModule } from '../../shared';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     SignupRoutingModule,
-    HeaderInicioModule
+    HeaderInicioModule,
+    LoadingModule,
+    FormsModule
   ],
   declarations: [
     SignupComponent

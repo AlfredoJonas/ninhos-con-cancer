@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StateService } from '../../services/state/state.service';
+import { StateService } from '../../services';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,11 +10,16 @@ export class SidebarComponent {
 
   public data: any;
 
-  constructor(public state: StateService) {
+  constructor(
+    public state: StateService
+  ) {
     this.data = state.data;
+    this.state.setRoute('/inicio','Inicio');    
   }
 
-  setRoute(){
-    this.state.setRoute('/inicio','Inicio');
+  setRoute(route){
+    if(route != this.data.bread_crumb[this.data.bread_crumb.length-1].route){
+      this.state.setRoute('/inicio','Inicio');
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { StateService } from '../../services/state/state.service'; 
+import { StateService } from '../../services';
 
 @Component({
   selector: 'app-header',
@@ -21,12 +21,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit() { }
 
   onLoggedout() {
-    this.data.is_logged_in = false;
+    this.state.set_all();
     localStorage.removeItem('is_logged_in');
   }
 
-  setRoute(){
-    this.state.setRoute('/inicio','Inicio');
+  setRoute(route) {
+    if (route != this.data.bread_crumb[this.data.bread_crumb.length - 1].route) {
+      this.state.setRoute('/inicio', 'Inicio');
+    }
   }
 
 }

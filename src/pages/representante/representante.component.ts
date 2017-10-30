@@ -15,7 +15,7 @@ export class RepresentanteComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public state: StateService,
+    public state: StateService
   ) {
     this.data = state.data;
   }

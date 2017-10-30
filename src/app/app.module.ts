@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Http, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AuthGuard, HeaderInicioModule, StateService } from '../shared';
 import { NgxAdminLteModule } from 'ngx-admin-lte';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -21,7 +21,8 @@ import { NgxAdminLteModule } from 'ngx-admin-lte';
         HttpClientModule,
         AppRoutingModule,
         HeaderInicioModule,
-        NgxAdminLteModule
+        NgxAdminLteModule,
+        FormsModule
     ],
     providers: [AuthGuard, StateService],
     bootstrap: [AppComponent]

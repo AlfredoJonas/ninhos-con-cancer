@@ -6,13 +6,17 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { PerfilRRoutingModule } from './perfil-r-routing.module';
 import { PerfilRComponent } from './perfil-r.component';
+import { LoadingModule } from '../../../shared';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         CommonModule,
         NgbCarouselModule.forRoot(),
         NgbAlertModule.forRoot(),
-        PerfilRRoutingModule
+        PerfilRRoutingModule,
+        FormsModule,
+        LoadingModule
     ],
     declarations: [
         PerfilRComponent

@@ -21,33 +21,55 @@ export class DonateComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.data = state.data;
-    this.myForm = this.createMyForm();
   }
 
   ngOnInit() {
-  }
+    this.state.setRoute(this.router.url, 'Donar');
 
-  private createMyForm() {
-    return this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
-
-  onLoggedin() {
-    console.log(this.myForm.value);
-    this.state.post('/users/login', { username: this.myForm.value.email, password: this.myForm.value.password })
-      .done((data) => {
-        console.log(data);
-        this.data.user_a = data[0];
-        if(this.data.user_a.representante_id)
-        this.data.is_logged_in = true;
-        localStorage.setItem('isLoggedin', 'true');
-        this.router.navigate(['/representantes']);
+    var ninhos = [];
+    let all_resources = [];
+    this.data.loading = true;
+    this.state.get('/ninhos')
+      .done((data1) => {
+        console.log(data1);
+        ninhos = data1;
+        ninhos.forEach(ninho => {
+          this.state.get('/ninhos/' + ninho.id + '/cancer')
+            .done((data2) => {
+              console.log(data2);
+              ninho.cancer = data2;
+              data2.forEach(cancer => {
+                all_resources.push(true);
+                this.state.get('/cancer/' + cancer.id)
+                  .done((data3) => {
+                    console.log(data3);
+                    cancer.cancer = data3;
+                    all_resources.splice(0, 1);
+                    if (all_resources.length == 0) {
+                      this.data.loading = false;
+                      this.data.ninhos = ninhos;
+                    }
+                  })
+                  .fail((err) => {
+                    console.log("Error: " + JSON.stringify(err));
+                    this.data.loading = false;
+                  });
+              });
+            })
+            .fail((err) => {
+              console.log("Error: " + JSON.stringify(err));
+              this.data.loading = false;
+            });
+        });
       })
       .fail((err) => {
         console.log("Error: " + JSON.stringify(err));
+        this.data.loading = false;
       });
+  }
+
+  goNinho(id) {
+    this.data.ninho_a = this.data.ninhos[this.data.ninhos.findIndex((item) => item.id == id)];
   }
 
 }

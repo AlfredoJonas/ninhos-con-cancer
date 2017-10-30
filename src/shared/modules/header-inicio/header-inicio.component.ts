@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { StateService } from '../../services/state/state.service';
+import { StateService } from '../../services';
 
 @Component({
   selector: 'app-header-inicio',
