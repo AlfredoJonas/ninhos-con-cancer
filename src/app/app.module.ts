@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AuthGuard, HeaderInicioModule, StateService } from '../shared';
-import { NgxAdminLteModule } from 'ngx-admin-lte';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { FormsModule } from '@angular/forms';
         HttpClientModule,
         AppRoutingModule,
         HeaderInicioModule,
-        NgxAdminLteModule,
         FormsModule
     ],
     providers: [AuthGuard, StateService],

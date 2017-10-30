@@ -9,8 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico",
-        { "glob": "**/*", "input": "../node_modules/ngx-admin-lte/src/public/assets", "output": "./assets" }
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -28,7 +27,7 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js",        
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/datatables.net/js/jquery.dataTables.js",
         "../node_modules/admin-lte/dist/js/adminlte.min.js"
       ],
