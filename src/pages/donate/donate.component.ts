@@ -28,14 +28,13 @@ export class DonateComponent implements OnInit {
     localStorage.setItem('is_donate', this.data.is_donate);    
     this.state.setRoute(this.router.url, 'Donar');
 
-    var ninhos = [];
     let all_resources = [];
     this.data.loading = true;
     this.state.get('/ninhos')
       .done((data1) => {
         console.log(data1);
-        ninhos = data1;
-        ninhos.forEach(ninho => {
+        this.data.ninhos = JSON.parse(JSON.stringify(data1));        
+        data1.forEach(ninho => {
           this.state.get('/ninhos/' + ninho.id + '/cancer')
             .done((data2) => {
               console.log(data2);
@@ -49,7 +48,7 @@ export class DonateComponent implements OnInit {
                     all_resources.splice(0, 1);
                     if (all_resources.length == 0) {
                       this.data.loading = false;
-                      this.data.ninhos = ninhos;
+                      this.data.ninhos = data1;
                     }
                   })
                   .fail((err) => {
@@ -57,6 +56,7 @@ export class DonateComponent implements OnInit {
                     this.data.loading = false;
                   });
               });
+
             })
             .fail((err) => {
               console.log("Error: " + JSON.stringify(err));

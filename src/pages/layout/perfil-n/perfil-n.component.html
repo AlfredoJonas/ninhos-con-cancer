@@ -12,32 +12,29 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <form role="form">
-              <div class="form-group">
-                <label>Id</label>
-                <input type="text" class="form-control" placeholder="c-10">
-              </div>
+            <form role="form" ngNativeValidate (ngSubmit)="save()">
               <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" class="form-control" placeholder="c-10">
+                <input type="text" class="form-control" placeholder="nombre" [(ngModal)]="ninho.nombre">
               </div>
               <div class="form-group">
                 <label>Apellido</label>
-                <input type="text" class="form-control" placeholder="c-10">
+                <input type="text" class="form-control" placeholder="apellido" [(ngModal)]="ninho.apellido">
               </div>
               <div class="form-group">
                 <label>Descripción de la situación</label>
-                <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..."></textarea>
+                <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..." [(ngModal)]="ninho.descripcion"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-info pull-right" data-dismiss="modal">Guardar</button>
               </div>
             </form>
           </div>
           <!-- /.box-body -->
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-info pull-right" data-dismiss="modal" (click)="save()">Guardar</button>
-      </div>
+
     </div>
   </div>
 </div>
@@ -82,7 +79,7 @@
               </li>
             </ul>
 
-            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
+            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" (click)="copyData()">
               <b>Editar</b>
             </a>
           </div>
@@ -97,55 +94,38 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <strong>
-              <div class="row">
-                <div class="col-md-9">
-                  <i class="fa fa-medkit" aria-hidden="true"></i> Cancer de pancreas
+            <div *ngFor="let cancer of data.ninho_a.cancer">
+              <strong>
+                <div class="row">
+                  <div class="col-md-9">
+                    <i class="fa fa-medkit" aria-hidden="true"></i> {{cancer.cancer.nombre}}
+                  </div>
+                  <div class="col-md-3">
+                    {{cancer.descripcion}}
+                  </div>
                 </div>
-                <div class="col-md-3">
-                  <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                  </button>
-                </div>
-              </div>
-            </strong>
-            <hr>
-            <strong>
-              <div class="row">
-                <div class="col-md-9">
-                  <i class="fa fa-medkit" aria-hidden="true"></i> Cancer de pulmon
-                </div>
-                <div class="col-md-3">
-                  <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                  </button>
-                </div>
-              </div>
-            </strong>
-            <hr>
-            <strong>
-              <div class="row">
-                <div class="col-md-9">
-                  <i class="fa fa-medkit" aria-hidden="true"></i> Cancer de estomago
-                </div>
-                <div class="col-md-3">
-                  <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                  </button>
-                </div>
-              </div>
-            </strong>
+              </strong>
+              <hr>
+            </div>
           </div>
-          <form role="form">
+          <form role="form" ngNativeValidate (ngSubmit)="save()">
             <div class="form-group">
-              <label>Agregar Cancer</label>
-              <select class="form-control">
-                <option>Estomago</option>
-                <option>Pancreas</option>
-                <option>Cabeza</option>
+              <label>Agregar cancer</label>
+              <select class="form-control" [(ngModel)]="data.cancer_a.id" name="select_cancer" required>
+                <option [ngValue]="tipo.id" *ngFor="let tipo of data.tipos">{{tipo.descripcion}}</option>
               </select>
             </div>
-          </form>
+            <div class="form-group">
+              <label>Descripcion</label>
+              <input type="text" class="form-control" placeholder="descripcion" [(ngModel)]="data.cancer_a.descripcion" required>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-info pull-right btn-block" (click)="newCancer()">Agregar</button>
+            </div>
+          </form><!-- 
           <a href="#" class="btn btn-primary btn-block">
             <b>Agregar</b>
-          </a>
+          </a> -->
           <!-- /.box-body -->
         </div>
         <!-- /.box -->
@@ -180,14 +160,15 @@
                 </div>
               </div>
               <div class="box-body new_requirement">
-                <form role="form">
+                <form role="form" ngNativeValidate (ngSubmit)="new_requerimiento()">
                   <div class="form-group">
                     <label>Descripción situación</label>
-                    <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..."></textarea>
+                    <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..." [(ngModel)]="data.requerimiento_a.descripcion"
+                      required></textarea>
                   </div>
                   <div class="form-group">
                     <label>Cantidad</label>
-                    <input type="number" class="form-control" placeholder="0">
+                    <input type="number" class="form-control" placeholder="0" [(ngModel)]="data.requerimiento_a.cantidad" required>
                   </div>
                   <div class="form-group">
                     <label>Fecha vencimiento</label>
@@ -195,144 +176,57 @@
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="date" class="form-control" name="bday">
+                      <input type="date" class="form-control" name="bday" [(ngModel)]="data.requerimiento_a.fecha_vencimiento" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label>Tipo</label>
-                    <select class="form-control">
-                      <option>Vitaminas</option>
-                      <option>Comida</option>
-                      <option>Insumos</option>
+                    <select class="form-control" [(ngModel)]="data.requerimiento_a.tipo_id" name="select_municipio" required>
+                      <option [ngValue]="tipo.id" *ngFor="let tipo of data.tipos">{{tipo.descripcion}}</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Adjuntos</label>
-                    <input type="file" name="img" multiple>
+                    <input type="file" name="img" multiple [(ngModel)]="data.requerimiento_a.adjuntos">
                   </div>
                 </form>
-                <button type="submit" class="btn btn-info pull-right btn-block" (click)="save()">Guardar</button>
+                <button type="submit" class="btn btn-info pull-right btn-block">Guardar</button>
               </div>
 
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6" *ngFor="let requerimiento of data.ninho_a.requerimientos">
             <div class="box box-warning box-solid">
               <div class="box-header with-border">
-                <h3 class="box-title">Vitamina C</h3>
+                <h3 class="box-title">{{requerimiento.tipo.descripcion}}</h3>
 
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c1')">
-                    <i id="ic1" class="fa fa-minus"></i>
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c'+requerimiento.id)">
+                    <i id="ic{{requerimiento}}" class="fa fa-minus"></i>
                   </button>
                 </div>
               </div>
-              <div class="box-body c1">
+              <div class="box-body c{{requerimiento.id}}">
                 <div class="box-footer no-padding">
                   <ul class="nav nav-stacked">
                     <li>
-                      <a>Una vitamina muy necesaria</a>
+                      <a>{{requerimiento.descripcion}}</a>
                     </li>
                     <li>
                       <a>Cantidad
-                        <span class="pull-right badge bg-blue">5</span>
+                        <span class="pull-right badge bg-blue">{{requerimiento.cantidad}}</span>
                       </a>
                     </li>
                     <li>
                       <a>Fecha vencimiento
-                        <span class="pull-right badge bg-blue">22/10/2017</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>Requerimiento
-                        <span class="pull-right badge bg-blue">Vitaminas</span>
+                        <span class="pull-right badge bg-blue">{{requerimiento.fecha_vencimiento}}</span>
                       </a>
                     </li>
                   </ul>
                 </div>
-                <img id="img1" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img1')">
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="box box-warning box-solid">
-              <div class="box-header with-border">
-                <h3 class="box-title">Vitamina Z</h3>
-
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c2')">
-                    <i id="ic2" class="fa fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="box-body c2">
-                <div class="box-footer no-padding">
-                  <ul class="nav nav-stacked">
-                    <li>
-                      <a>Una vitamina muy necesaria</a>
-                    </li>
-                    <li>
-                      <a>Cantidad
-                        <span class="pull-right badge bg-blue">5</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>Fecha vencimiento
-                        <span class="pull-right badge bg-blue">22/10/2017</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>Requerimiento
-                        <span class="pull-right badge bg-blue">Vitaminas</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <img id="img2" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img2')">
-                <img id="img3" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img3')">
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="box box-warning box-solid">
-              <div class="box-header with-border">
-                <h3 class="box-title">Vitamina X</h3>
-
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c3')">
-                    <i id="ic3" class="fa fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="box-body c3">
-                <div class="box-footer no-padding">
-                  <ul class="nav nav-stacked">
-                    <li>
-                      <a>Una vitamina muy necesaria</a>
-                    </li>
-                    <li>
-                      <a>Cantidad
-                        <span class="pull-right badge bg-blue">5</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>Fecha vencimiento
-                        <span class="pull-right badge bg-blue">22/10/2017</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>Requerimiento
-                        <span class="pull-right badge bg-blue">Vitaminas</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <img id="img4" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img4')">
-                <img id="img5" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img5')">
-                <img id="img6" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img6')">
-                <img id="img7" src="../../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img7')">
+                <img id="img1" src="../../assets/images/image.png" data-toggle="modal" data-target="#myModaZoom" (click)="openImg('img1')">
               </div>
             </div>
           </div>

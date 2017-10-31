@@ -25,6 +25,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.data.loading = false;    
   }
 
   private createMyForm() {
@@ -51,39 +52,6 @@ export class WelcomeComponent implements OnInit {
               if (all_resources.length == 0) {
                 this.finishGetResources();                
               }
-            })
-            .fail((err) => {
-              console.log("Error: " + JSON.stringify(err));
-              this.data.loading = false;
-            });
-
-          all_resources.push(true);            
-          this.state.get('/estados')
-            .done((data) => {
-              console.log(data);
-              this.data.estados = data;
-                this.state.get('/municipios')
-                .done((data) => {
-                  console.log(data);
-                  this.data.municipios = data;
-                  this.data.estados.forEach(estado => {
-                    estado.municipios = [];
-                    this.data.municipios.forEach(municipio => {
-                      if(estado.id == municipio.estado_id){
-                        estado.municipios.push(municipio);
-                      }
-                    });
-                  });
-                  console.log(this.data.estados);
-                  all_resources.splice(0, 1);
-                  if (all_resources.length == 0) {
-                    this.finishGetResources();                
-                  }
-                })
-                .fail((err) => {
-                  console.log("Error: " + JSON.stringify(err));
-                  this.data.loading = false;
-                });
             })
             .fail((err) => {
               console.log("Error: " + JSON.stringify(err));

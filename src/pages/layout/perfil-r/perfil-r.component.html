@@ -13,48 +13,55 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <form  role="form">
+            <form role="form" ngNativeValidate (ngSubmit)="saveRepresentante()">
               <div class="form-group">
-                <label>Cedula</label>
-                <input type="text" class="form-control"  name="cedula" placeholder="cedula" value="{{data.user_a.representante.cedula}}">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email" placeholder="email" [(ngModel)]="representante.email"
+                  required>
               </div>
               <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" class="form-control"  name="nombre" placeholder="nombre" value="{{data.user_a.representante.nombre}}">
+                <input type="text" class="form-control" name="nombre" placeholder="nombre" [(ngModel)]="representante.nombre"
+                  required>
               </div>
               <div class="form-group">
                 <label>Apellido</label>
-                <input type="text" class="form-control"  name="apellido" placeholder="apellido" value="{{data.user_a.representante.apellido}}">
+                <input type="text" class="form-control" name="apellido" placeholder="apellido" [(ngModel)]="representante.apellido"
+                  required>
               </div>
               <div class="form-group">
                 <label>Numero de contacto 1</label>
-                <input type="text" class="form-control" name="numero_contacto_1" placeholder="numero de contacto" value="{{data.user_a.representante.numero_contacto_1}}">
+                <input type="text" class="form-control" name="numero_contacto_1" placeholder="numero de contacto" [(ngModel)]="representante.numero_contacto_1"
+                  required>
               </div>
               <div class="form-group">
                 <label>Numero de contacto 2</label>
-                <input type="text" class="form-control"  name="numero_contacto_2" placeholder="numero de contacto" value="{{data.user_a.representante.numero_contacto_2}}">
+                <input type="text" class="form-control" name="numero_contacto_2" placeholder="numero de contacto" [(ngModel)]="representante.numero_contacto_2"
+                  required>
               </div>
               <div class="form-group">
                 <label>Estado</label>
-                <select class="form-control" [(ngModel)]="data.user_a.representante.municipio.estado_id" name="select_estado" (ngModelChange)="changeEstate()">
+                <select class="form-control" [(ngModel)]="data.user_a.representante.municipio.estado_id" name="select_estado" (ngModelChange)="changeEstate()"
+                  required>
                   <option [ngValue]="estado.id" *ngFor="let estado of data.estados">{{estado.descripcion}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>Municipio</label>
-                <select class="form-control" [(ngModel)]="data.user_a.representante.municipio_id" name="select_municipio">
-                  <option [ngValue]="municipio.id" *ngFor="let municipio of data.estado_a.municipios">{{municipio.descripcion}}</option>                  
+                <select class="form-control" [(ngModel)]="data.user_a.representante.municipio_id" name="select_municipio" required>
+                  <option [ngValue]="municipio.id" *ngFor="let municipio of data.estado_a.municipios">{{municipio.descripcion}}</option>
                 </select>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-info pull-right">Guardar</button>
               </div>
             </form>
           </div>
           <!-- /.box-body -->
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-info pull-right" data-dismiss="modal" (click)="saveRepresentante()" >Guardar</button>
-      </div>
+
     </div>
   </div>
 </div>
@@ -103,7 +110,7 @@
               </li>
             </ul>
 
-            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
+            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" (click)="copyData()">
               <b>Editar</b>
             </a>
           </div>
@@ -142,7 +149,7 @@
             <p>{{data.user_a.representante.municipio.estado.descripcion}}</p>
           </div>
 
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
+          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" (click)="copyData()">
             <b>Editar</b>
           </a>
           <!-- /.box-body -->
@@ -162,14 +169,10 @@
                 </div>
               </div>
               <div class="box-body new_child">
-                <form role="form">
-                  <div class="form-group">
-                    <label>Id</label>
-                    <input type="text" class="form-control" placeholder="id" value="{{data.ninho_a.id}}" [(ngModel)]="data.ninho_a.id" name="id" required>
-                  </div>
+                <form role="form" ngNativeValidate (ngSubmit)="newChild()">
                   <div class="form-group">
                     <label>Nombre</label>
-                    <input type="text" class="form-control" placeholder="nombre" value="{{data.ninho_a.nombre}}" [(ngModel)]="data.ninho_a.nombre" name="name" required>
+                    <input type="text" class="form-control" placeholder="nombre" [(ngModel)]="data.ninho_a.nombre" name="name" required>
                   </div>
                   <div class="form-group">
                     <label>Apellido</label>
@@ -177,204 +180,47 @@
                   </div>
                   <div class="form-group">
                     <label>Descripción de la situación</label>
-                    <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..." [(ngModel)]="data.ninho_a.descripcion_situacion" name="descripcion_situacion" required></textarea>
+                    <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..." [(ngModel)]="data.ninho_a.descripcion_situacion"
+                      name="descripcion_situacion" required></textarea>
                   </div>
-                  <button type="submit" class="btn btn-default">siguiente</button>
+                  <button type="submit" class="btn btn-info pull-right btn-block">Guardar</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6" *ngFor="let ninho of representante.ninhos">
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user-2">
               <!-- Add the bg color to the header using any of the bg-* classes -->
-              <div class="widget-user-header bg-yellow">
+              <div class="widget-user-header bg-yellow box-body">
+                <div class="box-tools pull-right box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                </div>
                 <div class="widget-user-image">
                   <img class="img-circle" src="../../../../assets/images/niño.jpg" alt="Foto del niño">
                 </div>
                 <!-- /.widget-user-image -->
-                <h3 class="widget-user-username">Edwin Vargas</h3>
-                <h5 class="widget-user-desc">En cama en el Hospital central</h5>
+                <h3 class="widget-user-username">{{ninho.nombre}}</h3>
+                <h5 class="widget-user-desc">{{ninho.descripcion_situacion}}</h5>
               </div>
-              <div class="box-footer no-padding">
+              <div class="box-footer no-padding n1">
                 <ul class="nav nav-stacked">
-                  <li>
+                  <li *ngFor="let cancer of ninho.cancer">
                     <a>
                       <div class="row">
-                        <div class="col-md-7">En gravedad situacion</div>
+                        <div class="col-md-7">{{cancer.descripcion}}</div>
                         <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de pancreas</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">Se encuentra dormida, en estado leve.</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de estomago</span>
+                          <span class="pull-right badge bg-blue">{{cancer.cancer.nombre}}</span>
                         </div>
                       </div>
                     </a>
                   </li>
                 </ul>
-                <a [routerLink]="['/perfil-ninho']" class="btn btn-primary btn-block">
-                  <b>ver</b>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <!-- Widget: user widget style 1 -->
-            <div class="box box-widget widget-user-2">
-              <!-- Add the bg color to the header using any of the bg-* classes -->
-              <div class="widget-user-header bg-yellow">
-                <div class="widget-user-image">
-                  <img class="img-circle" src="../../../../assets/images/niño.jpg" alt="Foto del niño">
-                </div>
-                <!-- /.widget-user-image -->
-                <h3 class="widget-user-username">Edwin Vargas</h3>
-                <h5 class="widget-user-desc">En cama en el Hospital central</h5>
-              </div>
-              <div class="box-footer no-padding">
-                <ul class="nav nav-stacked">
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">En gravedad situacion</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de pancreas</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">Se encuentra dormida, en estado leve.</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de estomago</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">En gravedad situacion</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de pancreas</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">Se encuentra dormida, en estado leve.</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de estomago</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-                <a [routerLink]="['/perfil-ninho']" class="btn btn-primary btn-block">
-                  <b>ver</b>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <!-- Widget: user widget style 1 -->
-            <div class="box box-widget widget-user-2">
-              <!-- Add the bg color to the header using any of the bg-* classes -->
-              <div class="widget-user-header bg-yellow">
-                <div class="widget-user-image">
-                  <img class="img-circle" src="../../../../assets/images/niño.jpg" alt="Foto del niño">
-                </div>
-                <!-- /.widget-user-image -->
-                <h3 class="widget-user-username">Edwin Vargas</h3>
-                <h5 class="widget-user-desc">En cama en el Hospital central</h5>
-              </div>
-              <div class="box-footer no-padding">
-                <ul class="nav nav-stacked">
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">En gravedad situacion</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de pancreas</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">Se encuentra dormida, en estado leve.</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de estomago</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">En gravedad situacion</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de pancreas</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-                <a [routerLink]="['/perfil-ninho']" class="btn btn-primary btn-block">
-                  <b>ver</b>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <!-- Widget: user widget style 1 -->
-            <div class="box box-widget widget-user-2">
-              <!-- Add the bg color to the header using any of the bg-* classes -->
-              <div class="widget-user-header bg-yellow">
-                <div class="widget-user-image">
-                  <img class="img-circle" src="../../../../assets/images/niño.jpg" alt="Foto del niño">
-                </div>
-                <!-- /.widget-user-image -->
-                <h3 class="widget-user-username">Edwin Vargas</h3>
-                <h5 class="widget-user-desc">En cama en el Hospital central</h5>
-              </div>
-              <div class="box-footer no-padding">
-                <ul class="nav nav-stacked">
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">En gravedad situacion</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de pancreas</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">Se encuentra dormida, en estado leve.</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de estomago</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-                <a [routerLink]="['/perfil-ninho']" class="btn btn-primary btn-block">
+                <a [routerLink]="['/ninho']" class="btn btn-primary btn-block" (click)="goChild(ninho.id)">
                   <b>ver</b>
                 </a>
               </div>

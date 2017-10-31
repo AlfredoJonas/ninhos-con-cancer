@@ -181,15 +181,15 @@ export class StateService {
   }
   put(ruta, obj) {
     // return $.delete('');
-    $.ajax({
+    /* $.ajax({
       url: this.url_rest + '' + ruta, // your api url
       // jQuery < 1.9.0 -> use type
       // jQuery >= 1.9.0 -> use method
       method: 'PUT', // method is any HTTP method
       data: obj, // data as js object
       success: function (data) { console.log(data); this.data.loading = false; }
-    });
-    // return this.http.put(this.url_rest + '' + ruta, obj);
+    }); */
+    return this.http.put(this.url_rest + '' + ruta, obj);
   }
   delete(obj) {
     return this.http.delete(this.url_rest + '' + obj.ruta + '/' + obj.id);
