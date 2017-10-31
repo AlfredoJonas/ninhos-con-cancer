@@ -67,14 +67,13 @@ export class StateService {
     console.log(this.data.bread_crumb);
   }
 
-  set_representante(cedula, nombre, apellido, numero_contacto_1, numero_contacto_2, user_id, municipio_id) {
+  set_representante(cedula, nombre, apellido, numero_contacto_1, numero_contacto_2, municipio_id) {
     this.data.representante_a = {
       cedula: cedula,
       nombre: nombre,
       apellido: apellido,
       numero_contacto_1: numero_contacto_1,
       numero_contacto_2: numero_contacto_2,
-      user_id: user_id,
       municipio_id: municipio_id
     };
   }
@@ -88,7 +87,7 @@ export class StateService {
     };
   }
   set_cancer(id, nombre, descripcion) {
-    this.data.cancer = {
+    this.data.cancer_a = {
       id: id,
       nombre: nombre,
       descripcion: descripcion
@@ -155,7 +154,7 @@ export class StateService {
   }
 
   set_all() {
-    this.set_representante('', '', '', '', '', '', '');
+    this.set_representante('', '', '', '', '', '');
     this.set_ninho('', '', '', '', '');
     this.set_cancer('', '', '');
     this.set_tipo('', '');

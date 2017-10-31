@@ -15,11 +15,6 @@
           <div class="box-body">
             <form role="form" ngNativeValidate (ngSubmit)="saveRepresentante()">
               <div class="form-group">
-                <label>Email</label>
-                <input type="text" class="form-control" name="email" placeholder="email" [(ngModel)]="representante.email"
-                  required>
-              </div>
-              <div class="form-group">
                 <label>Nombre</label>
                 <input type="text" class="form-control" name="nombre" placeholder="nombre" [(ngModel)]="representante.nombre"
                   required>
@@ -190,14 +185,14 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6" *ngFor="let ninho of representante.ninhos">
+          <div class="col-md-6" *ngFor="let ninho of data.user_a.representante.ninhos">
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user-2">
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header bg-yellow box-body">
                 <div class="box-tools pull-right box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  <button type="button" class="btn btn-box-tool" style="border: 1px solid white;" (click)="deleteChild(ninho.id)">
+                    <i class="fa fa-trash" aria-hidden="true" style="font-size: 30px; color: white;"></i>
                   </button>
                 </div>
                 <div class="widget-user-image">
@@ -220,7 +215,7 @@
                     </a>
                   </li>
                 </ul>
-                <a [routerLink]="['/ninho']" class="btn btn-primary btn-block" (click)="goChild(ninho.id)">
+                <a [routerLink]="['/perfil-ninho']" class="btn btn-primary btn-block" (click)="goChild(ninho.id)">
                   <b>ver</b>
                 </a>
               </div>

@@ -20,7 +20,7 @@ export class PerfilRComponent implements OnInit {
     numero_contacto_1: '',
     numero_contacto_2: '',
     municipio_id: '',
-    municipio: {estado_id: ''}    
+    municipio: { estado_id: '' }
   };
 
   constructor(
@@ -110,13 +110,13 @@ export class PerfilRComponent implements OnInit {
         this.data.loading = false;
       });
   }
-  
-  copyData(){
+
+  copyData() {
     this.representante = JSON.parse(JSON.stringify(this.data.user_a.representante));
   }
 
-  goChild(id){
-    this.data.ninho_a = this.data.representante_a.ninhos[this.data.representante_a.ninhos.findIndex((item) => item.id == id)];    
+  goChild(id) {
+    this.data.ninho_a = this.data.user_a.representante.ninhos[this.data.user_a.representante.ninhos.findIndex((item) => item.id == id)];
   }
 
   slide(id) {
@@ -132,9 +132,17 @@ export class PerfilRComponent implements OnInit {
     this.data.loading = true;
 
     console.log(this.representante);
+    // this.representante._method = 'put';
     this.state.post('/representantes/' + this.representante.cedula, this.representante)
       .done((data) => {
         console.log(data);
+        alert("El representante se ha actualizado correctamente");
+        this.data.user_a.representante.cedula = data.cedula;
+        this.data.user_a.representante.nombre = data.nombre;
+        this.data.user_a.representante.apellido = data.apellido;
+        this.data.user_a.representante.numero_contacto_1 = data.numero_contacto_1;
+        this.data.user_a.representante.numero_contacto_2 = data.numero_contacto_2;
+        this.data.user_a.representante.municipio_id = data.municipio_id;
         this.data.loading = false;
       })
       .fail((err) => {
@@ -159,6 +167,19 @@ export class PerfilRComponent implements OnInit {
         this.data.loading = false;
       });
     console.log(this.data.ninho_a);
+  }
+
+  deleteChild(id) {
+    this.state.delete('/ninhos/' + id)
+      .subscribe(
+      data => {
+        var res = JSON.parse(data["_body"]);
+        console.log(res);
+      },
+      err => {
+        console.log("Error: " + JSON.stringify(err));
+      }
+      );
   }
 
 }

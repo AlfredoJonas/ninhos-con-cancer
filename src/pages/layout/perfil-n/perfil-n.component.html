@@ -1,3 +1,4 @@
+<app-loading *ngIf="data.loading"></app-loading>
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -15,19 +16,20 @@
             <form role="form" ngNativeValidate (ngSubmit)="save()">
               <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" class="form-control" placeholder="nombre" [(ngModal)]="ninho.nombre">
+                <input type="text" class="form-control" placeholder="nombre" [(ngModel)]="ninho.nombre" name="nombre">
               </div>
               <div class="form-group">
                 <label>Apellido</label>
-                <input type="text" class="form-control" placeholder="apellido" [(ngModal)]="ninho.apellido">
+                <input type="text" class="form-control" placeholder="apellido" [(ngModel)]="ninho.apellido" name="apellido">
               </div>
               <div class="form-group">
                 <label>Descripción de la situación</label>
-                <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..." [(ngModal)]="ninho.descripcion"></textarea>
+                <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..." [(ngModel)]="ninho.descripcion_situacion"
+                  name="descripcion"></textarea>
               </div>
               <div class="modal-footer">
                 <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-info pull-right" data-dismiss="modal">Guardar</button>
+                <button type="submit" class="btn btn-info pull-right" (click)="saveChild()">Guardar</button>
               </div>
             </form>
           </div>
@@ -64,18 +66,18 @@
           <div class="box-body box-profile">
             <img class="profile-user-img img-responsive img-circle" src="../../../assets/images/user_profile.png" alt="Imagen de usuario">
 
-            <h3 class="profile-username text-center">Sanoj94</h3>
+            <!-- <h3 class="profile-username text-center">Sanoj94</h3> -->
 
-            <p class="text-muted text-center">Se encuentra en cama en estos momentos</p>
+            <p class="text-muted text-center">{{data.ninho_a.descripcion_situacion}}</p>
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
                 <b>Nombre</b>
-                <p class="pull-right">Edwin Leandro</p>
+                <p class="pull-right">{{data.ninho_a.nombre}}</p>
               </li>
               <li class="list-group-item">
                 <b>Apellido</b>
-                <p class="pull-right">Vargas Apaclia</p>
+                <p class="pull-right">{{data.ninho_a.apellido}}</p>
               </li>
             </ul>
 
@@ -98,7 +100,7 @@
               <strong>
                 <div class="row">
                   <div class="col-md-9">
-                    <i class="fa fa-medkit" aria-hidden="true"></i> {{cancer.cancer.nombre}}
+                    <i class="fa fa-medkit" aria-hidden="true"></i> {{cancer.nombre}}
                   </div>
                   <div class="col-md-3">
                     {{cancer.descripcion}}
@@ -108,21 +110,23 @@
               <hr>
             </div>
           </div>
-          <form role="form" ngNativeValidate (ngSubmit)="save()">
+          <form role="form" ngNativeValidate (ngSubmit)="newCancer()">
             <div class="form-group">
               <label>Agregar cancer</label>
               <select class="form-control" [(ngModel)]="data.cancer_a.id" name="select_cancer" required>
-                <option [ngValue]="tipo.id" *ngFor="let tipo of data.tipos">{{tipo.descripcion}}</option>
+                <option [ngValue]="cancer.id" *ngFor="let cancer of data.cancer">{{cancer.nombre}}</option>
               </select>
             </div>
             <div class="form-group">
               <label>Descripcion</label>
-              <input type="text" class="form-control" placeholder="descripcion" [(ngModel)]="data.cancer_a.descripcion" required>
+              <input type="text" class="form-control" placeholder="descripcion" [(ngModel)]="data.cancer_a.descripcion" name="descripcion"
+                required>
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-info pull-right btn-block" (click)="newCancer()">Agregar</button>
+              <button type="submit" class="btn btn-info pull-right btn-block">Agregar</button>
             </div>
-          </form><!-- 
+          </form>
+          <!-- 
           <a href="#" class="btn btn-primary btn-block">
             <b>Agregar</b>
           </a> -->
@@ -164,11 +168,11 @@
                   <div class="form-group">
                     <label>Descripción situación</label>
                     <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..." [(ngModel)]="data.requerimiento_a.descripcion"
-                      required></textarea>
+                      name="descripcion" required></textarea>
                   </div>
                   <div class="form-group">
                     <label>Cantidad</label>
-                    <input type="number" class="form-control" placeholder="0" [(ngModel)]="data.requerimiento_a.cantidad" required>
+                    <input type="number" class="form-control" placeholder="0" [(ngModel)]="data.requerimiento_a.cantidad" name="cantidad" required>
                   </div>
                   <div class="form-group">
                     <label>Fecha vencimiento</label>
@@ -176,7 +180,8 @@
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="date" class="form-control" name="bday" [(ngModel)]="data.requerimiento_a.fecha_vencimiento" required>
+                      <input type="date" class="form-control" name="bday" [(ngModel)]="data.requerimiento_a.fecha_vencimiento" name="fecha_vencimiento"
+                        required>
                     </div>
                   </div>
                   <div class="form-group">
@@ -187,10 +192,10 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Adjuntos</label>
-                    <input type="file" name="img" multiple [(ngModel)]="data.requerimiento_a.adjuntos">
+                    <input type="file" name="img" multiple (change)="onChangeAdjunto($event)" name="adjuntos">
                   </div>
+                  <button type="submit" class="btn btn-info pull-right btn-block">Guardar</button>
                 </form>
-                <button type="submit" class="btn btn-info pull-right btn-block">Guardar</button>
               </div>
 
             </div>
@@ -203,6 +208,9 @@
                 <h3 class="box-title">{{requerimiento.tipo.descripcion}}</h3>
 
                 <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" style="border: 1px solid white;" (click)="deleteRequerimiento(requerimiento.id)">
+                        <i class="fa fa-trash" aria-hidden="true" style="font-size: 18px; color: white;"></i>
+                      </button>
                   <button type="button" class="btn btn-box-tool" data-widget="collapse" (click)="slide('c'+requerimiento.id)">
                     <i id="ic{{requerimiento}}" class="fa fa-minus"></i>
                   </button>
