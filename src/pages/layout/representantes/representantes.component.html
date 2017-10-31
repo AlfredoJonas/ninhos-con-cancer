@@ -1,3 +1,4 @@
+<app-loading *ngIf="data.loading"></app-loading>
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -93,172 +94,24 @@
               <thead>
                 <tr>
                   <th>Cedula</th>
-                  <!-- <th>Nombre usuario</th> -->
                   <th>Nombre</th>
                   <th>Apellido</th>
-                  <th>Correo</th>
                   <th>Telefono 1</th>
                   <th>Telefono 2</th>
                   <th>Municipio</th>
-                  <th>Estado</th>
                   <th style="width: 100px;">Opciones</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody *ngFor="let representante of data.representantes">
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                  <!-- <td>Trident</td> -->
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
+                  <td>{{representante.cedula}}</td>
+                  <td>{{representante.nombre}}</td>
+                  <td>{{representante.apellido}}</td>
+                  <td>{{representante.numero_contacto_1}}</td>
+                  <td>{{representante.numero_contacto_2}}</td>
+                  <td>{{representante.municipio_id}}</td>
                   <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goRepresentante()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                  <!-- <td>Trident</td> -->
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goRepresentante()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <!-- <td>Dillo 0.8</td> -->
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>X</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goRepresentante()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Links</td>
-                  <!-- <td>Text only</td> -->
-                  <td>-</td>
-                  <td>X</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goRepresentante()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>-</td>
-                  <td>X</td>
-                  <td>Trident</td>
-                  <!-- <td>Trident</td> -->
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goRepresentante()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>IE Mobile</td>
-                  <td>Windows Mobile 6</td>
-                  <td>-</td>
-                  <td>C</td>
-                  <!-- <td>Trident</td> -->
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goRepresentante()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>PSP browser</td>
-                  <td>PSP</td>
-                  <td>-</td>
-                  <td>C</td>
-                  <!-- <td>Trident</td> -->
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goRepresentante()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Other browsers</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>U</td>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <!-- <td>Trident</td> -->
-                  <td>Trident</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goRepresentante()">
+                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goRepresentante(representante.cedula)">
                     </button>
                     <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
                       (click)="edit()">
@@ -271,14 +124,11 @@
               <tfoot>
                 <tr>
                   <th>Cedula</th>
-                  <!-- <th>Nombre usuario</th> -->
                   <th>Nombre</th>
                   <th>Apellido</th>
-                  <th>Correo</th>
                   <th>Telefono 1</th>
                   <th>Telefono 2</th>
-                  <th>Municipio</th>
-                  <th>Estado</th>
+                  <th>Municipio</th>                  
                   <th style="width: 100px;">Opciones</th>
                 </tr>
               </tfoot>

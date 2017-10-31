@@ -68,89 +68,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Internet Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Internet Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Links</td>
-                  <!-- <td>Text only</td> -->
-                  <td>-</td>
-                  <td>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>IE Mobile</td>
-                  <td>Windows Mobile 6</td>
-                  <td>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>PSP browser</td>
-                  <td>PSP</td>
-                  <td>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Other browsers</td>
-                  <td>All others</td>
+                <tr *ngFor="let municipio of data.municipios">
+                  <td>{{municipio.id}}</td>
+                  <td>{{municipio.descripcion}}</td>
                   <td>
                     <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
                       (click)="edit()">

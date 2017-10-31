@@ -22,9 +22,20 @@ export class EstadosComponent implements OnInit {
 
   ngOnInit() {
     this.state.setRoute(this.router.url, 'Estados');
+
+    this.data.loading = true;
+    this.state.get(`/estados`)
+      .done((estados) => {
+        this.data.estados = estados;
+        this.data.loading = false;
+      })
+      .fail((err) => {
+        console.log("Error: " + JSON.stringify(err));
+        this.data.loading = false;
+      });
   }
 
   goRepresentante(){
-    this.router.navigate(['/perfil']);    
+    this.router.navigate(['/perfil']);
   }
 }

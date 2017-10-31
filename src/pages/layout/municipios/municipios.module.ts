@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { MunicipiosRoutingModule } from './municipios-routing.module';
 import { MunicipiosComponent } from './municipios.component';
 import { DataTablesModule } from 'angular-datatables';
+import { LoadingModule } from '../../../shared';
 
 @NgModule({
     imports: [
         CommonModule,
         MunicipiosRoutingModule,
-        DataTablesModule
+        DataTablesModule,
+        LoadingModule
     ],
     declarations: [
         MunicipiosComponent    

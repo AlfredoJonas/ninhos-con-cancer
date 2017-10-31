@@ -22,9 +22,20 @@ export class MunicipiosComponent implements OnInit {
 
   ngOnInit() {
     this.state.setRoute(this.router.url, 'Municipios');
+
+    this.data.loading = true;
+    this.state.get(`/municipios`)
+      .done((municipios) => {
+        this.data.municipios = municipios;
+        this.data.loading = false;
+      })
+      .fail((err) => {
+        console.log("Error: " + JSON.stringify(err));
+        this.data.loading = false;
+      });
   }
 
   goRepresentante(){
-    this.router.navigate(['/perfil']);    
+    this.router.navigate(['/perfil']);
   }
 }

@@ -26,7 +26,7 @@
     minimist "^1.2.0"
     rxjs "^5.4.2"
 
-"@angular/animations@^4.2.4":
+"@angular/animations@^4.2.4", "@angular/animations@^4.4.6":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-4.4.6.tgz#fa661899a8a4e38cb7c583c7a5c97ce65d592a35"
   dependencies:
@@ -92,7 +92,7 @@
   optionalDependencies:
     node-sass "^4.3.0"
 
-"@angular/common@^4.2.4":
+"@angular/common@^4.2.4", "@angular/common@^4.4.4":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-4.4.6.tgz#4b81420724e0828a0e839b95a55eb1a7e83918f2"
   dependencies:
@@ -112,19 +112,19 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/core@^4.2.4":
+"@angular/core@^4.2.4", "@angular/core@^4.4.4":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.4.6.tgz#13031fd10dcfe438875419b38f21120958bc2354"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/forms@^4.2.4":
+"@angular/forms@^4.2.4", "@angular/forms@^4.4.4":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-4.4.6.tgz#fe64ace42435c1b80f49034b7c41ce8caf14a44a"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/http@^4.2.4":
+"@angular/http@^4.2.4", "@angular/http@^4.4.4":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.4.6.tgz#0af680c6710bdc026d940e225cfd0f6a5c005d0c"
   dependencies:
@@ -134,19 +134,19 @@
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-4.4.6.tgz#498ece95c5f6066403bf9fd3c5831af42b45618b"
 
-"@angular/platform-browser-dynamic@^4.2.4":
+"@angular/platform-browser-dynamic@^4.2.4", "@angular/platform-browser-dynamic@^4.4.4":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.4.6.tgz#4d3d9a6a7bf2cf3de4058a615ae059eff641fa36"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/platform-browser@^4.2.4":
+"@angular/platform-browser@^4.2.4", "@angular/platform-browser@^4.4.4":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.4.6.tgz#a9839c547e1b654fa1d24a89780c8ba6ab8dcce0"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/router@^4.2.4":
+"@angular/router@^4.2.4", "@angular/router@^4.4.4":
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/router/-/router-4.4.6.tgz#0f6ad29ae0ff8d2c9ea379bd320447217b7ec866"
   dependencies:
@@ -174,6 +174,14 @@
     loader-utils "^1.0.2"
     magic-string "^0.22.3"
     source-map "^0.5.6"
+
+"@ngx-translate/core@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-8.0.0.tgz#751fd6b512d80f3a748d2de8dfc96dfefa29afe0"
+
+"@ngx-translate/http-loader@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-2.0.0.tgz#9c16d07cd070c67ada270a2e940281eb826b3f43"
 
 "@schematics/angular@~0.0.38":
   version "0.0.48"
@@ -259,6 +267,10 @@ adm-zip@0.4.4:
 adm-zip@^0.4.7:
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.4.7.tgz#8606c2cbf1c426ce8c8ec00174447fd49b6eafc1"
+
+admin-lte@2.3.11:
+  version "2.3.11"
+  resolved "https://registry.yarnpkg.com/admin-lte/-/admin-lte-2.3.11.tgz#da56dcd34d42e9ef1af362be15520a053a9d43db"
 
 admin-lte@^2.4.2:
   version "2.4.2"
@@ -347,6 +359,10 @@ amdefine@>=0.0.4:
 angular-datatables@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/angular-datatables/-/angular-datatables-4.4.0.tgz#d30c4d7d10019434f35d4f3348082baae20b9c5d"
+
+angular2-toaster@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/angular2-toaster/-/angular2-toaster-4.0.1.tgz#587aef6df903cf5e2b7eba4047b54ec9a21b8e3b"
 
 ansi-html@0.0.7:
   version "0.0.7"
@@ -1341,7 +1357,7 @@ copy-webpack-plugin@^4.1.1:
     minimatch "^3.0.4"
     node-dir "^0.1.10"
 
-core-js@^2.2.0, core-js@^2.4.0, core-js@^2.4.1:
+core-js@^2.2.0, core-js@^2.4.0, core-js@^2.4.1, core-js@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
 
@@ -3782,6 +3798,30 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+ngx-admin-lte@^0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/ngx-admin-lte/-/ngx-admin-lte-0.6.4.tgz#c6bcbfb3b2dca37fc131c66d8135f5a0fd95246f"
+  dependencies:
+    "@angular/animations" "^4.4.6"
+    "@angular/common" "^4.4.4"
+    "@angular/core" "^4.4.4"
+    "@angular/forms" "^4.4.4"
+    "@angular/http" "^4.4.4"
+    "@angular/platform-browser" "^4.4.4"
+    "@angular/platform-browser-dynamic" "^4.4.4"
+    "@angular/router" "^4.4.4"
+    "@ngx-translate/core" "^8.0.0"
+    "@ngx-translate/http-loader" "^2.0.0"
+    admin-lte "2.3.11"
+    angular2-toaster "^4.0.1"
+    bootstrap "^3.3.7"
+    core-js "^2.5.1"
+    font-awesome "^4.7.0"
+    ionicons "^3.0.0"
+    jquery "^3.2.1"
+    rxjs "^5.4.3"
+    zone.js "^0.8.17"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
@@ -5005,6 +5045,12 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
 rxjs@^5.4.2:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.0.tgz#26d8f3866eb700e247e0728a147c3d628993d812"
+  dependencies:
+    symbol-observable "^1.0.1"
+
+rxjs@^5.4.3:
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.2.tgz#28d403f0071121967f18ad665563255d54236ac3"
   dependencies:
     symbol-observable "^1.0.1"
 
@@ -6313,6 +6359,6 @@ yn@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-2.0.0.tgz#e5adabc8acf408f6385fc76495684c88e6af689a"
 
-zone.js@^0.8.14:
+zone.js@^0.8.14, zone.js@^0.8.17:
   version "0.8.18"
   resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.18.tgz#8cecb3977fcd1b3090562ff4570e2847e752b48d"
