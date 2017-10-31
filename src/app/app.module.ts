@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { AuthGuard, HeaderInicioModule, StateService } from '../shared';
+import { AuthGuard, AuthDonate, HeaderInicioModule, StateService } from '../shared';
 import { NgxAdminLteModule } from 'ngx-admin-lte';
 import { FormsModule } from '@angular/forms';
 
@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
         NgxAdminLteModule,
         FormsModule
     ],
-    providers: [AuthGuard, StateService],
+    providers: [AuthGuard, AuthDonate, StateService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

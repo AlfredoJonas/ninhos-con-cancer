@@ -1,40 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { slideToLeft } from '../../app/router.animations';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StateService } from '../../shared';
+import { slideToLeft } from '../../../app/router.animations';
+import { StateService } from '../../../shared';
 
 @Component({
-  selector: 'app-donate',
-  templateUrl: './donate.component.html',
-  styleUrls: ['./donate.component.scss'],
+  selector: 'app-representante',
+  templateUrl: './representante.component.html',
+  styleUrls: ['./representante.component.scss'],
   animations: [slideToLeft()]
 })
-export class DonateComponent implements OnInit {
+export class RepresentanteComponent implements OnInit {
 
   public data: any;
-  private myForm: FormGroup;
 
   constructor(
     private router: Router,
-    public state: StateService,
-    private formBuilder: FormBuilder
+    public state: StateService
   ) {
     this.data = state.data;
   }
 
   ngOnInit() {
-    this.data.is_donate = true;
-    localStorage.setItem('is_donate', this.data.is_donate);    
-    this.state.setRoute(this.router.url, 'Donar');
+    this.state.setRoute(this.router.url, 'Representante');
 
     let all_resources = [];
     this.data.loading = true;
-    this.state.get('/ninhos')
-      .done((data1) => {
-        console.log(data1);
-        this.data.ninhos = JSON.parse(JSON.stringify(data1));        
-        data1.forEach(ninho => {
+    this.state.get('/representantes/' + this.data.representante_a.cedula + '/ninhos')
+      .done((ninhos) => {
+        console.log(ninhos);
+        ninhos.forEach(ninho => {
           this.state.get('/ninhos/' + ninho.id + '/cancer')
             .done((data2) => {
               console.log(data2);
@@ -48,7 +42,7 @@ export class DonateComponent implements OnInit {
                     all_resources.splice(0, 1);
                     if (all_resources.length == 0) {
                       this.data.loading = false;
-                      this.data.ninhos = data1;
+                      this.data.representante_a.ninhos = ninhos;
                     }
                   })
                   .fail((err) => {
@@ -56,13 +50,13 @@ export class DonateComponent implements OnInit {
                     this.data.loading = false;
                   });
               });
-
             })
             .fail((err) => {
               console.log("Error: " + JSON.stringify(err));
               this.data.loading = false;
             });
         });
+        if(ninhos.length == 0){this.data.loading = false}        
       })
       .fail((err) => {
         console.log("Error: " + JSON.stringify(err));
@@ -70,8 +64,8 @@ export class DonateComponent implements OnInit {
       });
   }
 
-  goNinho(id) {
-    this.data.ninho_a = this.data.ninhos[this.data.ninhos.findIndex((item) => item.id == id)];
+  goChild(id){
+    this.data.ninho_a = this.data.representante_a.ninhos[this.data.representante_a.ninhos.findIndex((item) => item.id == id)];    
   }
 
 }

@@ -74,24 +74,23 @@
           </span>
         </a>
       </li>
-      <li class="treeview" *ngIf="data.user_a.rol_id == '1'">
-        <a>
-          <i class="fa fa-dashboard"></i>
-          <span>Dirección</span>
+      <li *ngIf="data.user_a.rol_id == '1'">
+        <a [routerLink]="['/municipios']" (click)="setRoute('/municipios')">
+          <i class="fa fa-gift" aria-hidden="true"></i>
+          <span> Municipios</span>
           <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
+            <small class="label pull-right bg-green"></small>
           </span>
         </a>
-        <ul class="treeview-menu">
-          <li>
-            <a [routerLink]="['/municipios']" (click)="setRoute('/municipios')">
-              <i class="fa fa-circle-o"></i> Municipios</a>
-          </li>
-          <li>
-            <a [routerLink]="['/estados']" (click)="setRoute('/estados')">
-              <i class="fa fa-circle-o"></i> Estados</a>
-          </li>
-        </ul>
+      </li>
+      <li *ngIf="data.user_a.rol_id == '1'">
+        <a [routerLink]="['/estados']" (click)="setRoute('/estados')">
+          <i class="fa fa-gift" aria-hidden="true"></i>
+          <span> Estados</span>
+          <span class="pull-right-container">
+            <small class="label pull-right bg-green"></small>
+          </span>
+        </a>
       </li>
       <li class="header">OTROS</li>
       <li>

@@ -9,7 +9,7 @@
             <strong> Registrate para continuar</strong>
           </div>
           <div class="panel-body">
-            <form role="form" ngNativeValidate>
+            <form role="form" ngNativeValidate (ngSubmit)="newUser()">
               <fieldset>
                 <div class="row">
                   <div class="center-block">
@@ -89,7 +89,7 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-map-marker"></i>
                         </span>
-                        <select class="form-control" [(ngModel)]="user_new.estado_id" name="select_estado" (ngModelChange)="changeEstate()">
+                        <select class="form-control" [(ngModel)]="user_new.estado_id" name="select_estado" (ngModelChange)="changeEstate()" required>
                           <option [ngValue]="null">Estado</option>
                           <option [ngValue]="estado.id" *ngFor="let estado of data.estados">{{estado.descripcion}}</option>
                         </select>
@@ -100,7 +100,7 @@
                         <span class="input-group-addon">
                           <i class="glyphicon glyphicon-map-marker"></i>
                         </span>
-                        <select class="form-control" [(ngModel)]="user_new.municipio_id" name="select_municipio">
+                        <select class="form-control" [(ngModel)]="user_new.municipio_id" name="select_municipio" required>
                           <option [ngValue]="null">Municipio</option>
                           <option [ngValue]="municipio.id" *ngFor="let municipio of data.estado_a.municipios">{{municipio.descripcion}}</option>
                         </select>

@@ -24,9 +24,9 @@ export class TipoRComponent implements OnInit {
     this.state.setRoute(this.router.url, 'Tipos Requerimiento');
 
     this.data.loading = true;
-    this.state.get(`/tipo`)
+    this.state.get(`/tipos`)
       .done((tipo) => {
-        this.data.tipo = tipo;
+        this.data.tipos = tipo;
         this.data.loading = false;
       })
       .fail((err) => {

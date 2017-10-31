@@ -1,5 +1,5 @@
 <app-header-inicio></app-header-inicio>
-
+<app-loading *ngIf="data.loading"></app-loading>
 <div class="representante-page" [@routerTransition]>
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -86,7 +86,7 @@
       </div>
       <div class="col-md-7">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6" *ngFor="let ninho of data.representante_a.ninhos">
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user-2">
               <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -95,33 +95,23 @@
                   <img class="img-circle" src="../../../../assets/images/niño.jpg" alt="Foto del niño">
                 </div>
                 <!-- /.widget-user-image -->
-                <h3 class="widget-user-username">Edwin Vargas</h3>
-                <h5 class="widget-user-desc">En cama en el Hospital central</h5>
+                <h3 class="widget-user-username">{{ninho.nombre}}</h3>
+                <h5 class="widget-user-desc">{{ninho.descripcion}}</h5>
               </div>
               <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
-                  <li>
+                  <li *ngFor="let cancer of ninho.cancer">
                     <a>
                       <div class="row">
-                        <div class="col-md-7">En gravedad situacion</div>
+                        <div class="col-md-7">{{cancer.descripcion}}</div>
                         <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de pancreas</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <div class="row">
-                        <div class="col-md-7">Se encuentra dormida, en estado leve.</div>
-                        <div class="col-md-5">
-                          <span class="pull-right badge bg-blue">Cancer de estomago</span>
+                          <span class="pull-right badge bg-blue">{{cancer.cancer.nombre}}</span>
                         </div>
                       </div>
                     </a>
                   </li>
                 </ul>
-                <a [routerLink]="['/ninho']" class="btn btn-primary btn-block">
+                <a [routerLink]="['/ninho']" class="btn btn-primary btn-block" (click)="goChild(ninho.id)">
                   <b>ver</b>
                 </a>
               </div>

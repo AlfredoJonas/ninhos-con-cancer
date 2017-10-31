@@ -1,3 +1,4 @@
+<app-loading *ngIf="data.loading"></app-loading>
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -80,118 +81,11 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goNinho()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goNinho()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>X</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goNinho()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Links</td>
-                  <td>-</td>
-                  <td>X</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goNinho()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>-</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goNinho()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>IE Mobile</td>
-                  <td>Windows Mobile 6</td>
-                  <td>-</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goNinho()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>PSP browser</td>
-                  <td>PSP</td>
-                  <td>-</td>
-                  <td>
-                    <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goNinho()">
-                    </button>
-                    <button id="btnEdit" class="btn btn-sm btn-warning glyphicon glyphicon-pencil" accesskey="a" hidden data-toggle="modal" data-target="#myModal"
-                      (click)="edit()">
-                    </button>
-                    <button id="btnExc" class="btn btn-sm btn-danger glyphicon glyphicon-trash" accesskey="x" hidden>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Other browsers</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>-</td>
+                <tr *ngFor="let ninho of data.ninhos">
+                  <td>{{ninho.id}}</td>
+                  <td>{{ninho.nombre}}</td>
+                  <td>{{ninho.apellido}}</td>
+                  <td>{{ninho.descripcion_situacion}}</td>
                   <td>
                     <button id="btnDet" class="btn btn-sm btn-success glyphicon glyphicon glyphicon-eye-open" accesskey="v" hidden (click)="goNinho()">
                     </button>

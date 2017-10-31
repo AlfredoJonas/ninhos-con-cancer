@@ -13,60 +13,52 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <form role="form" ngNativeValidate (ngSubmit)="saveRepresentante()">
+            <form role="form">
               <div class="form-group">
-                <label>Email</label>
-                <input type="text" class="form-control" name="email" placeholder="email" [(ngModel)]="representante.email"
-                  required>
+                <label>Cedula</label>
+                <input type="text" class="form-control" name="cedula" placeholder="cedula" [(ngModel)]="data.representante_a.cedula">
               </div>
               <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" class="form-control" name="nombre" placeholder="nombre" [(ngModel)]="representante.nombre"
-                  required>
+                <input type="text" class="form-control" name="nombre" placeholder="nombre" [(ngModel)]="data.representante_a.nombre">
               </div>
               <div class="form-group">
                 <label>Apellido</label>
-                <input type="text" class="form-control" name="apellido" placeholder="apellido" [(ngModel)]="representante.apellido"
-                  required>
+                <input type="text" class="form-control" name="apellido" placeholder="apellido" [(ngModel)]="data.representante_a.apellido">
               </div>
               <div class="form-group">
                 <label>Numero de contacto 1</label>
-                <input type="text" class="form-control" name="numero_contacto_1" placeholder="numero de contacto" [(ngModel)]="representante.numero_contacto_1"
-                  required>
+                <input type="text" class="form-control" name="numero_contacto_1" placeholder="numero de contacto" [(ngModel)]="data.representante_a.numero_contacto_1">
               </div>
               <div class="form-group">
                 <label>Numero de contacto 2</label>
-                <input type="text" class="form-control" name="numero_contacto_2" placeholder="numero de contacto" [(ngModel)]="representante.numero_contacto_2"
-                  required>
+                <input type="text" class="form-control" name="numero_contacto_2" placeholder="numero de contacto" [(ngModel)]="data.representante_a.numero_contacto_2">
               </div>
               <div class="form-group">
                 <label>Estado</label>
-                <select class="form-control" [(ngModel)]="data.user_a.representante.municipio.estado_id" name="select_estado" (ngModelChange)="changeEstate()"
-                  required>
+                <select class="form-control" [(ngModel)]="data.representante_a.municipio.estado_id" name="select_estado" (ngModelChange)="changeEstate()">
                   <option [ngValue]="estado.id" *ngFor="let estado of data.estados">{{estado.descripcion}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>Municipio</label>
-                <select class="form-control" [(ngModel)]="data.user_a.representante.municipio_id" name="select_municipio" required>
+                <select class="form-control" [(ngModel)]="data.representante_a.municipio_id" name="select_municipio">
                   <option [ngValue]="municipio.id" *ngFor="let municipio of data.estado_a.municipios">{{municipio.descripcion}}</option>
                 </select>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-info pull-right">Guardar</button>
               </div>
             </form>
           </div>
           <!-- /.box-body -->
         </div>
       </div>
-
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-info pull-right" data-dismiss="modal" (click)="saveRepresentante()">Guardar</button>
+      </div>
     </div>
   </div>
 </div>
-
-<div class="perfil-r-page" [@routerTransition]>
+<div class="representante-page" [@routerTransition]>
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
@@ -91,26 +83,25 @@
           <div class="box-body box-profile">
             <img class="profile-user-img img-responsive img-circle" src="../../../assets/images/user_profile.png" alt="Imagen de usuario">
 
-            <h3 class="profile-username text-center">{{data.user_a.username}}</h3>
+            <h3 class="profile-username text-center">{{data.representante_a.user.username}}</h3>
 
-            <p class="text-muted text-center">{{data.user_a.email}}</p>
+            <p class="text-muted text-center">{{data.representante_a.user.email}}</p>
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
                 <b>Nombre</b>
-                <p class="pull-right">{{data.user_a.representante.nombre}}</p>
+                <p class="pull-right">{{data.representante_a.nombre}}</p>
               </li>
               <li class="list-group-item">
                 <b>Apellido</b>
-                <p class="pull-right">{{data.user_a.representante.apellido}}</p>
+                <p class="pull-right">{{data.representante_a.apellido}}</p>
               </li>
               <li class="list-group-item">
                 <b>Cedula</b>
-                <p class="pull-right">{{data.user_a.representante.cedula}}</p>
+                <p class="pull-right">{{data.representante_a.cedula}}</p>
               </li>
             </ul>
-
-            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" (click)="copyData()">
+            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
               <b>Editar</b>
             </a>
           </div>
@@ -129,7 +120,7 @@
               <i class="fa fa-book margin-r-5"></i> Numero de telefono 1</strong>
 
             <p class="text-muted">
-              {{data.user_a.representante.numero_contacto_1}}
+              {{data.representante_a.numero_contacto_1}}
             </p>
 
             <hr>
@@ -137,19 +128,20 @@
             <strong>
               <i class="fa fa-map-marker margin-r-5"></i> Numero de telefono 2</strong>
 
-            <p class="text-muted">{{data.user_a.representante.numero_contacto_2}}</p>
+            <p class="text-muted">
+              {{data.representante_a.numero_contacto_2}}
+            </p>
 
             <hr>
 
             <strong>
               <i class="fa fa-file-text-o margin-r-5"></i> Dirección</strong>
             <h3>Municipio</h3>
-            <p>{{data.user_a.representante.municipio.descripcion}}</p>
+            <p>{{data.representante_a.municipio.descripcion}}</p>
             <h3>Estado</h3>
-            <p>{{data.user_a.representante.municipio.estado.descripcion}}</p>
+            <p>{{data.representante_a.municipio.estado.descripcion}}</p>
           </div>
-
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" (click)="copyData()">
+          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
             <b>Editar</b>
           </a>
           <!-- /.box-body -->
@@ -169,10 +161,16 @@
                 </div>
               </div>
               <div class="box-body new_child">
-                <form role="form" ngNativeValidate (ngSubmit)="newChild()">
+                <form role="form">
+                  <div class="form-group">
+                    <label>Id</label>
+                    <input type="text" class="form-control" placeholder="id  [(ngModel)]="data.ninho_a.id" name="id"
+                      required>
+                  </div>
                   <div class="form-group">
                     <label>Nombre</label>
-                    <input type="text" class="form-control" placeholder="nombre" [(ngModel)]="data.ninho_a.nombre" name="name" required>
+                    <input type="text" class="form-control" placeholder="nombre" [(ngModel)]="data.ninho_a.nombre"
+                      name="name" required>
                   </div>
                   <div class="form-group">
                     <label>Apellido</label>
@@ -183,31 +181,26 @@
                     <textarea class="form-control" rows="3" style="max-width: 100%;" placeholder="Descripción ..." [(ngModel)]="data.ninho_a.descripcion_situacion"
                       name="descripcion_situacion" required></textarea>
                   </div>
-                  <button type="submit" class="btn btn-info pull-right btn-block">Guardar</button>
+                  <button type="submit" class="btn btn-default">siguiente</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6" *ngFor="let ninho of representante.ninhos">
+          <div class="col-md-6" *ngFor="let ninho of data.representante_a.ninhos">
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user-2">
               <!-- Add the bg color to the header using any of the bg-* classes -->
-              <div class="widget-user-header bg-yellow box-body">
-                <div class="box-tools pull-right box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                  </button>
-                </div>
+              <div class="widget-user-header bg-yellow">
                 <div class="widget-user-image">
                   <img class="img-circle" src="../../../../assets/images/niño.jpg" alt="Foto del niño">
                 </div>
                 <!-- /.widget-user-image -->
                 <h3 class="widget-user-username">{{ninho.nombre}}</h3>
-                <h5 class="widget-user-desc">{{ninho.descripcion_situacion}}</h5>
+                <h5 class="widget-user-desc">{{ninho.descripcion}}</h5>
               </div>
-              <div class="box-footer no-padding n1">
+              <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
                   <li *ngFor="let cancer of ninho.cancer">
                     <a>
@@ -235,3 +228,12 @@
   </section>
   <!-- /.content -->
 </div>
+
+<footer id="main-footer" class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 0.1.4
+  </div>
+  <strong>Copyleft &copy; 2017-2018
+    <a [routerLink]="['/inicio']">www.niñosconcancer.com.ve</a>
+  </strong> todos los derechos y zurdos reservados.
+</footer>

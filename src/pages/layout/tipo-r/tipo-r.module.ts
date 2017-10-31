@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { TipoRRoutingModule } from './tipo-r-routing.module';
 import { TipoRComponent } from './tipo-r.component';
 import { DataTablesModule } from 'angular-datatables';
+import { LoadingModule } from '../../../shared';
 
 @NgModule({
     imports: [
         CommonModule,
         TipoRRoutingModule,
-        DataTablesModule
+        DataTablesModule,
+        LoadingModule
     ],
     declarations: [TipoRComponent]
 })

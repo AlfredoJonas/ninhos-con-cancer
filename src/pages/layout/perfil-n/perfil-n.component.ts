@@ -12,6 +12,7 @@ import { StateService } from '../../../shared';
 export class PerfilNComponent implements OnInit {
 
   public data: any;
+  private ninho: any;
 
   constructor(
     private router: Router,
@@ -21,7 +22,55 @@ export class PerfilNComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.state.setRoute(this.router.url, 'Perfil Niño');    
+    this.state.setRoute(this.router.url, 'Perfil Niño');   
+    
+    let all_resources = [];
+    all_resources.push(true);
+    this.state.get('/tipos')
+      .done((data) => {
+        console.log(data);
+        this.data.tipos = data;
+        all_resources.splice(0, 1);
+        if (all_resources.length == 0) {
+          this.data.loading = false;
+        }
+      })
+      .fail((err) => {
+        console.log("Error: " + JSON.stringify(err));
+        this.data.loading = false;
+      });
+
+      this.data.loading = true;
+      this.state.get(`/ninhos/${this.data.ninho_a.id}/requerimientos`)
+        .done((requerimientos) => {
+          console.log(requerimientos);
+          requerimientos.forEach(tipo => {
+            all_resources.push(true);
+            this.state.get('/tipos/' + tipo.tipo_id)
+              .done((data) => {
+                console.log(data);
+                tipo.tipo = data;
+                all_resources.splice(0, 1);
+                if (all_resources.length == 0) {
+                  this.data.ninho_a.requerimientos = requerimientos;
+                  this.data.loading = false;
+                }
+              })
+              .fail((err) => {
+                console.log("Error: " + JSON.stringify(err));
+                this.data.loading = false;
+              });
+          });
+          if(requerimientos.length == 0){this.data.loading = false}
+        })
+        .fail((err) => {
+          console.log("Error: " + JSON.stringify(err));
+          this.data.loading = false;
+        });
+  }
+
+  copyData(){
+    this.ninho = JSON.parse(JSON.stringify(this.data.ninho_a));
   }
 
   openImg(img){

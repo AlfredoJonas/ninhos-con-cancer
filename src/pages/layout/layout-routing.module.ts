@@ -8,6 +8,7 @@ const routes: Routes = [
         children: [
             { path: 'representantes', loadChildren: './representantes/representantes.module#RepresentantesModule' },
             { path: 'perfil-representante', loadChildren: './perfil-r/perfil-r.module#PerfilRModule' },
+            { path: 'perfil-representantes', loadChildren: './representante/representante.module#RepresentanteModule' },            
             { path: 'perfil-administrador', loadChildren: './perfil-a/perfil-a.module#PerfilAModule' },           
             { path: 'perfil-ninho', loadChildren: './perfil-n/perfil-n.module#PerfilNModule' },                                    
             { path: 'ninhos', loadChildren: './ninhos/ninhos.module#NinhosModule' },
