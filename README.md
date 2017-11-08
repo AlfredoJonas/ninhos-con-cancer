@@ -1,4 +1,4 @@
-# Ncc
+# Niños Con Cancer
 
 Este proyecto se generó con [CLI Angular] (https://github.com/angular/angular-cli) versión 1.4.7.
 
@@ -55,8 +55,10 @@ Perfil del representante agregar niños a su cargo (Representante)
 ![alt text](https://raw.githubusercontent.com/alfredojonas/ninhos-con-cancer/master/resources/ejemplo_admin_representante_3.png)
 Simple LogIn (Publico)
 ![alt text](https://raw.githubusercontent.com/alfredojonas/ninhos-con-cancer/master/resources/ejemplo_login.png)
+
 Simple LogIn (Publico)
 ![alt text](https://raw.githubusercontent.com/alfredojonas/ninhos-con-cancer/master/resources/ejemplo_login_2.png)
+
 Administrador muestra el control de todas las tablas maestras de base de datos (Administrador)
 ![alt text](https://raw.githubusercontent.com/alfredojonas/ninhos-con-cancer/master/resources/ejemplo_admin.png)
 Administrador editar una tabla maestra (Administrador)
